@@ -11,4 +11,8 @@ app.get('*', (req, res) => {
   res.end();
 });
 
+function () => {
+  console.log( "bob" );
+}
+
 module.exports = app;
