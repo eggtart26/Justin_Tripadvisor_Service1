@@ -18,7 +18,7 @@ app.set('sqlport', process.env.SQLPORT || 5432 );
 // }
 
 app.listen(3000, () => {
-  console.log('Express server listening on port 3000.');
+  console.log('Express server listening on port 3000 woop.');
 });
 
 models.sequelize.sync(sequelizeOptions).then(() => {
