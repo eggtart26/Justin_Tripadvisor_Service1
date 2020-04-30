@@ -7,4 +7,18 @@ module.exports = {
     filename: 'bundle.js',
   },
   mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        loader: [{
+          loader: 'babel-loader',
+          query: {
+            presets: ['@babel/preset-react'],
+          },
+        }],
+      },
+    ],
+  },
 };
