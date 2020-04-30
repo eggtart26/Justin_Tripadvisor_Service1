@@ -2,15 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 
-const user = process.env.SQLUSER || 'root';
+const user = process.env.SQLUSER || 'snaketours';
 const password = process.env.SQLPASS || null;
-const port = process.env.SQLPORT || 3306;
-const dbname = process.env.SQLDBNAME || 'itinerary';
-const host = process.env.SQLHOST || 'localhost';
+const myport = process.env.SQLPORT || 5432;
+const dbname = process.env.SQLDBNAME || 'snaketours';
+const myhost = process.env.SQLHOST || 'localhost';
 
 const sequelize = new Sequelize(dbname, user, password, {
-  host,
-  port,
+  host: myhost,
+  port: myport,
   dialect: 'postgresql',
   dialectOptions: {
     multipleStatements: true,
