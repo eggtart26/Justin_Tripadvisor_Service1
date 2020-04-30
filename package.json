@@ -1,0 +1,19 @@
+{
+  "name": "fec",
+  "version": "1.0.0",
+  "description": "SNAKEADVISOR ITINERARY advises you on the thrilling views and attractions one can visit on their way to the hospital after being bit by a deadly SNAKE this is unfortunately not scripted in python",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marissaconner/tripadvisor-itenerary-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marissaconner/tripadvisor-itenerary-server/issues"
+  },
+  "homepage": "https://github.com/marissaconner/tripadvisor-itenerary-server#readme"
+}
