@@ -19,6 +19,7 @@ app.listen(3000, () => {
 models.sequelize.sync(sequelizeOptions).then(() => {
   const server = http.listen(app.get('sqlport'), () => {
     console.log(`SQL server on ${server.address().port}`);
+    seed(models);
   });
 })
   .catch((error) => {

@@ -7,10 +7,10 @@ module.exports = function (sequelize, DataTypes) {
       },
       latitude: DataTypes.FLOAT,
       longitude: DataTypes.FLOAT,
-      street_address: DataTypes.STRING,
-      city: DataTypes.STRING,
-      province: DataTypes.STRING,
-      postal: DataTypes.INTEGER,
+      // street_address: DataTypes.STRING,
+      // city: DataTypes.STRING,
+      // province: DataTypes.STRING,
+      // postal: DataTypes.INTEGER,
       description: DataTypes.TEXT,
       rating: DataTypes.FLOAT,
       attraction_url: DataTypes.STRING,
@@ -20,17 +20,17 @@ module.exports = function (sequelize, DataTypes) {
     },
     {
       tableName: 'Attractions',
-      indexes: [
-        {
-          unique: true,
-          fields: ['street_address', 'city'],
-        },
-      ],
+      // indexes: [
+      //   {
+      //     unique: true,
+      //     fields: ['street_address', 'city'],
+      //   },
+      // ],
+      //
     });
 
   Attraction.associate = function (models) {
     models.Attraction.belongsToMany(models.Tour, { as: 'stops', foreignKey: 'attraction_id', through: 'ToursAttractions' });
-    // Food, { as: 'components', foreignKey: 'Food' , through: 'b_foods_self' } 
   };
 
   return Attraction;
