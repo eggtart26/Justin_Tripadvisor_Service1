@@ -28,5 +28,10 @@ module.exports = function (sequelize, DataTypes) {
       ],
     });
 
+  Attraction.associate = function (models) {
+    models.Attraction.belongsToMany(models.Tour, { as: 'stops', foreignKey: 'attraction_id', through: 'ToursAttractions' });
+    // Food, { as: 'components', foreignKey: 'Food' , through: 'b_foods_self' } 
+  };
+
   return Attraction;
 };
