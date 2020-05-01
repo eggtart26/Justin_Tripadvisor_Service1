@@ -6,7 +6,6 @@ module.exports = function (sequelize, DataTypes) {
         unique: true,
       },
       overview: DataTypes.TEXT,
-      duration: DataTypes.INTEGER,
       cancellation_policy: DataTypes.TEXT,
       return_details: DataTypes.TEXT,
     },
