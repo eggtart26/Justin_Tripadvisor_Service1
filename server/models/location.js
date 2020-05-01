@@ -1,17 +1,35 @@
 module.exports = function (sequelize, DataTypes) {
-  const Location = sequelize.define('Location',
-    // attributes
+  const Attraction = sequelize.define('Attraction',
     {
+      name: {
+        type: DataTypes.STRING,
+        unique: true,
+      },
       latitude: DataTypes.FLOAT,
       longitude: DataTypes.FLOAT,
+      street_address: DataTypes.STRING,
+      city: DataTypes.STRING,
+      province: DataTypes.STRING,
+      postal: DataTypes.INTEGER,
+      description: DataTypes.TEXT,
+      rating: DataTypes.FLOAT,
+      attraction_url: DataTypes.STRING,
+      image_path: DataTypes.STRING,
+      image_filename: DataTypes.STRING,
+      image_alt: DataTypes.STRING,
     },
-    // options
     {
-      tableName: 'Locations',
+      tableName: 'Attractions',
+      indexes: [
+        {
+          unique: true,
+          fields: ['street_address', 'city'],
+        },
+      ],
     });
 
   // Locations.associate = function( models ){
   // }
 
-  return Location;
+  return Attraction;
 };
