@@ -28,8 +28,5 @@ module.exports = function (sequelize, DataTypes) {
       ],
     });
 
-  // Locations.associate = function( models ){
-  // }
-
   return Attraction;
 };
