@@ -1,6 +1,7 @@
 const app = require('../src/app');
 const http = require('http').Server(app);
 const models = require('./models');
+const seed = require('./seeddatabase');
 
 const sequelizeOptions = {
   force: true,
