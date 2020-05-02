@@ -83,19 +83,25 @@ module.exports = function (models) {
       });
     })
     .then(() => {
-      // go through the attractions and assign them to a random tour.
-      for (let j = 0; j < 100; j += 1) {
-        // models.Tour.findOne({
-        //   order: 'random()',
-        //   where: {
-        //     name: {
-        //       [Sequelize.Op.in]: tours,
-        //     },
-        //   },
-        // })
-        //   .then((tour) => {
-        //     console.log( tour );
-        // });
+      for (let i = 0; i < 100; i += 1) {
+        // A given tour is going to have an ID between 1 and 25
+        const tour_id = _.random(1, 25);
+        // a given attraction will have an ID between 1 and 100
+        const attraction_id = _.random(1, 100);
+
+        models.Attraction.findOne({
+          where: { id: attraction_id },
+        })
+          .then((attraction) => {
+            models.Tour.findOne({
+              where: {
+                id: tour_id,
+              },
+            })
+              .then((tour) => {
+                tour.addAttraction(attraction);
+              });
+          });
       }
     });
 };
