@@ -12,8 +12,10 @@ const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
 // when the server starts.  This option should be put to 'false' in production!
 
 app.set('sqlport', process.env.SQLPORT || 5432);
+
+
 app.listen(3000, () => {
-  console.log('Express server listening on port 3000 woop.');
+  console.log('Express server listening on port 3000.');
 });
 
 models.sequelize.sync(sequelizeOptions).then(() => {
