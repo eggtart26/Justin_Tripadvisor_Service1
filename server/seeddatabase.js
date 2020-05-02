@@ -1,5 +1,6 @@
 const _ = require('underscore');
 const faker = require('faker');
+const Sequelize = require('sequelize');
 // Tours
 
 module.exports = function (models) {
@@ -16,30 +17,19 @@ module.exports = function (models) {
     'The rendezvous will be disclosed by carrier pigeon',
   ];
 
-  const conveyance = ['Walking', 'Bus', 'Bike', 'Hiking', 'Go-Kart', 'Wine Tour', 'Daydrinking', 'Strolling'];
+  const lead = ['Enjoy A', 'Go On A', 'Take A', 'Beautiful', 'Windy', 'Wonderful', 'Starlight', 'Chaperoned', 'Virtual'];
+  const conveyance = ['Walking', 'Beautiful', 'Bus', 'Bike', 'Hiking', 'Go-Kart', 'Wine Tour', 'Daydrinking', 'Strolling'];
 
-  const titleChunk = ['Tour Of', 'Through', 'Across', 'Around'];
+  const tourTitleChunk = ['Tour Of', 'Through', 'Across', 'Around'];
 
-  const locales = [
-    {
-      name: ['San Francisco', 'SF', 'Bay City'],
-      boundaries: {
-        north: 37.788915,
-        east: -122.390197,
-        south: 37.722464,
-        west: -122.503719,
-      },
-    },
-    {
-      name: ['Telluride', 'Mount Wilson', 'San Joaquin', 'Mountain Town', 'Ski Ranch'],
-      boundaries: {
-        north: 38.026118,
-        east: -107.782354,
-        south: 37.897859,
-        west: -108.047467,
-      },
-    },
-  ];
+  const localeName = ['San Francisco', 'SF', 'The Big Fran', 'The 7 x 7', 'Bay City'];
+
+  const coords = {
+    north: 37.788915,
+    east: -122.390197,
+    south: 37.722464,
+    west: -122.503719,
+  };
 
   function pickrand(array) {
     const max = array.length -1;
@@ -47,44 +37,65 @@ module.exports = function (models) {
     return array[i];
   }
 
-  function makeTitle(locale) {
+  function makeTitle() {
+    const myLead = pickrand(lead);
     const myConveyance = pickrand(conveyance);
-    const myTitlechunk = pickrand(titleChunk);
-    const myLocale = pickrand(locale['name']);
-    const title = `${myConveyance} ${myTitlechunk} ${myLocale}`;
+    const myTitlechunk = pickrand(tourTitleChunk);
+    const myLocale = pickrand(localeName);
+    const title = `${myLead} ${myConveyance} ${myTitlechunk} ${myLocale}`;
     return title;
   }
 
-  for (let i = 0; i < 30; i++) {
-    const locale = locales[pickrand([0, 1])];
-    const name = makeTitle(locale);
-    const coords = locale.boundaries;
-    const latitude = Math.random() * (coords.north - coords.south) + coords.south;
-    const longitude = Math.random() * (coords.east - coords.west) + coords.west;
-    const description = faker.lorem.sentences();
-    let rating = Math.random(5 - 1) + 1;
-    rating = rating.toFixed(1);
 
-    models.Attraction.findOrCreate({
-      where: {
-        name,
-      },
-    })
-    // Missing where attribute in the options parameter
-      .then((attraction) => {
-        models.Attraction.update(
-          {
-            latitude,
-            longitude,
-            description,
-            rating,
-          },
-          {
-            where: {
-              name,
-            },
-          },
-        );
-      });
+  // Make a batch of tours:
+  const tours = [];
+  for (let i = 0; i < 25; i += 1) {
+    const tour = {
+      name: makeTitle(),
+      overview: faker.lorem.sentences(),
+      cancellation_policy: pickrand(cancellationPolicies),
+      return_details: pickrand(returnDetails),
+    };
+    tours.push(tour);
   }
+
+  // Make a batch of attractions:
+  const attractions = [];
+  for (let i = 0; i < 100; i += 1) {
+    const attraction = {
+      name: faker.lorem.words(),
+      latitude: Math.random() * (coords.north - coords.south) + coords.south,
+      longitude: Math.random() * (coords.east - coords.west) + coords.west,
+      description: faker.lorem.sentences(),
+      rating: (Math.random(5 - 1) + 1).toFixed(1),
+    };
+    attractions.push(attraction);
+  }
+
+  // Stick that into the database
+  models.Attraction.bulkCreate(attractions,
+    {
+      updateOnDuplicate: ['name'],
+    })
+    .then(() => {
+      models.Tour.bulkCreate(tours, {
+        updateOnDuplicate: ['name'],
+      });
+    })
+    .then(() => {
+      // go through the attractions and assign them to a random tour.
+      for (let j = 0; j < 100; j += 1) {
+        // models.Tour.findOne({
+        //   order: 'random()',
+        //   where: {
+        //     name: {
+        //       [Sequelize.Op.in]: tours,
+        //     },
+        //   },
+        // })
+        //   .then((tour) => {
+        //     console.log( tour );
+        // });
+      }
+    });
 };
