@@ -4,8 +4,8 @@
   "description": "SNAKEADVISOR ITINERARY advises you on the thrilling views and attractions one can visit on their way to the hospital after being bit by a deadly SNAKE this is unfortunately not scripted in python",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server/index.js",
-    "start": "nodemon server/index.js"
+    "test": "nodemon src/server/index.js",
+    "start": "nodemon src/server/index.js"
   },
   "repository": {
     "type": "git",

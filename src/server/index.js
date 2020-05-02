@@ -1,7 +1,10 @@
-const app = require('../src/app');
-const http = require('http').Server(app);
-const models = require('./models');
-const seed = require('./seeddatabase');
+let http = require('http');
+const app = require('./routes');
+const models = require('./database/models/index');
+const seed = require('./database/seeddatabase');
+const controller = require('./database/controller');
+
+http = http.Server(app);
 
 const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
 
