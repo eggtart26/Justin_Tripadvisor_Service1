@@ -87,7 +87,7 @@ module.exports = function (models) {
         // A given tour is going to have an ID between 1 and 25
         const tour_id = _.random(1, 25);
         // a given attraction will have an ID between 1 and 100
-        const attraction_id = _.random(1, 100);
+        const attraction_id = i;
 
         models.Attraction.findOne({
           where: { id: attraction_id },
