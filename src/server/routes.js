@@ -12,10 +12,16 @@ app.get('/tour/:id', (req, res) => {
   const { params: { id } } = req;
   // this is const id = req.params.id but it's defined using destructuring
   // https://exploringjs.com/impatient-js/ch_destructuring.html#object-destructuring
-
-  ctlr.getTour(id);
-  res.writeHead(200);
-  res.end();
+  ctlr.getTour(id, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.writeHead(500);
+      res.end();
+      return;
+    }
+    res.writeHead(200);
+    res.end(JSON.stringify(data));
+  });
 });
 
 app.get('*', (req, res) => {
