@@ -13,15 +13,30 @@ module.exports = {
     '/node_modules/',
   ],
 
-  moduleDirectories: [
-    'node_modules',
-  ],
+  // moduleDirectories: [
+  //   'node_modules',
+  // ],
 
   moduleFileExtensions: ['js', 'jsx'],
-
-  testEnvironmentOptions: {
-    'enzymeAdapter': 'react16',
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.jsx$': 'babel-jest',
+    // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
   },
 
-  
+  testEnvironmentOptions: {
+    enzymeAdapter: 'react16',
+  },
+
+  transformIgnorePatterns: [
+    "<rootDir>/node_modules/", //(?!(react|react-dom)/)
+  ],
+
+  testURL: 'http://localhost',
+
+  setupFilesAfterEnv: ['jest-enzyme'],
+  testEnvironment: 'enzyme',
+
+  // Indicatesh whether each individual test should be reported during the run
+  verbose: true,
 };

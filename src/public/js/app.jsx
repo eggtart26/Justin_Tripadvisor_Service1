@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="block">
-        <h2>Overview</h2>
+        <h1>Overview</h1>
         <p>Overview paragraph will go here hip hip hooray.</p>
         <h2>Itinerary</h2>
         <div className="map" />

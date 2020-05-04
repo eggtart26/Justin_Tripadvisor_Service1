@@ -1,4 +1,7 @@
-it('should just run my standards are low', ()=> {
-  const result = 1;
-  expect(result).toBe(1);
+import POIEntry from './POIEntry';
+
+describe('Addition', () => {
+  it('knows that 2 and 2 make 4', () => {
+    expect(2 + 2).toBe(4);
+  });
 });

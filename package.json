@@ -4,7 +4,7 @@
   "description": "SNAKEADVISOR ITINERARY advises you on the thrilling views and attractions one can visit on their way to the hospital after being bit by a deadly SNAKE this is unfortunately not scripted in python",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx webpack && jest",
     "start": "nodemon src/server/index.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "7.9.6",
     "@babel/preset-react": "7.9.4",
+    "babel-jest": "^26.0.0",
     "babel-loader": "8.1.0",
     "chai": "^4.2.0",
     "enzyme": "^3.11.0",
@@ -38,7 +39,9 @@
     "webpack-cli": "3.3.11"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.9.6",
     "express": "4.17.1",
+    "jest-enzyme": "^7.1.2",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
     "react": "16.13.1",
