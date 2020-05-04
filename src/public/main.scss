@@ -1,3 +1,20 @@
 * {
-  color: red;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, p, span {
+  color: rgb(44,44,44);
+}
+
+html, body {
+  background-color: #f2f2f2;
+}
+
+.block {
+  background-color: #ffffff;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 2px;
 }
