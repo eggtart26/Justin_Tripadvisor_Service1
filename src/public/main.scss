@@ -1,10 +1,20 @@
+$black: rgb(44,44,44);
+$bold: 700; 
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Arial';
+  -webkit-font-smoothing:antialiased;
 }
 
 h1, h2, h3, p, span {
-  color: rgb(44,44,44);
+  color: $black;
+}
+
+p, span {
+  font-size: 14px;
+  font-weight: 100;
 }
 
 html, body {
@@ -18,3 +28,53 @@ html, body {
   border: 1px solid rgb(224, 224, 224);
   border-radius: 2px;
 }
+
+.itinerary {
+  display: flex;
+  flex-direction: column;
+
+  .itinerary--stop {
+    display: flex;
+    padding: 6px;
+    padding-bottom: 12px;
+    flex-direction: column;
+    cursor: pointer;
+    cursor: hand;
+  }
+  
+  .itinerary--title {
+    font-weight: $bold;
+    font-size: 16px;
+  }
+
+  .itinerary--duration {
+
+  }
+
+  button {
+    padding: 8px 16px;
+    border: 1px solid $black;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: $bold;
+    cursor: pointer;
+    cursor: hand;
+  }
+
+  button:hover {
+    background-color: #d6d6d6;
+  }
+  button:active {
+    background-color: #adadad;
+  }
+  button:focus {
+    
+  }
+}
+
+ul {
+ li {
+  list-style-type: none;
+  }
+}
+

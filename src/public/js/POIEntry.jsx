@@ -2,14 +2,16 @@ import React from 'react';
 
 const POIEntry = () => (
   <li className="itinerary--stop">
-    <span>Name Of Attraction</span>
-    <span className="stopduration">
-      Stop: 4 hours
-    </span>
-    -
-    <span className="admission">
-      Admission included
-    </span>
+    <span className="itinerary--title">Name Of Attraction</span>
+    <div>
+      <span className="itinerary--duration">
+        Stop: 4 hours
+      </span>
+      -
+      <span className="admission">
+        Admission included
+      </span>
+    </div>
 
     <div className="rating">
       # reviews
@@ -29,10 +31,10 @@ const POIEntry = () => (
       More about Name Of Attraction
     </div>
 
-    <span>
+    <button type="button">
       See details &amp; photo
       <em />
-    </span>
+    </button>
 
   </li>
 );
