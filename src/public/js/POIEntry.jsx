@@ -1,7 +1,7 @@
 import React from 'react';
 
 const POIEntry = () => (
-  <li>
+  <li className="itinerary--stop">
     <span>Name Of Attraction</span>
     <span className="stopduration">
       Stop: 4 hours
