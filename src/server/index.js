@@ -1,7 +1,10 @@
-const app = require('../src/app');
-const http = require('http').Server(app);
-const models = require('./models');
-const seed = require('./seeddatabase');
+let http = require('http');
+const app = require('./routes');
+const models = require('./database/models/index');
+const seed = require('./database/seeddatabase');
+const controller = require('./database/controller');
+
+http = http.Server(app);
 
 const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
 
@@ -9,8 +12,10 @@ const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
 // when the server starts.  This option should be put to 'false' in production!
 
 app.set('sqlport', process.env.SQLPORT || 5432);
+
+
 app.listen(3000, () => {
-  console.log('Express server listening on port 3000 woop.');
+  console.log('Express server listening on port 3000.');
 });
 
 models.sequelize.sync(sequelizeOptions).then(() => {
@@ -19,7 +24,7 @@ models.sequelize.sync(sequelizeOptions).then(() => {
 
     models.Tour.count()
       .then((results) => {
-        if (results <= 100) {
+        if (results < 100) {
           seed(models);
         } else {
           console.log('\x1b[32m%s\x1b[0m', `${results} rows found in Tours table: database seed script will not run.`);
