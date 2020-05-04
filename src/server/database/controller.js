@@ -17,7 +17,6 @@ module.exports.getTour = function (id, callback) {
     ],
   })
     .then((tour) => {
-
       callback(null, tour);
     })
     .catch((error) => {

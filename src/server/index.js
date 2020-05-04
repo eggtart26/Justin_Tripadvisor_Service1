@@ -24,7 +24,7 @@ models.sequelize.sync(sequelizeOptions).then(() => {
 
     models.Tour.count()
       .then((results) => {
-        if (results <= 100) {
+        if (results < 100) {
           seed(models);
         } else {
           console.log('\x1b[32m%s\x1b[0m', `${results} rows found in Tours table: database seed script will not run.`);
