@@ -5,16 +5,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      poi1: false,
-      poi2: false,
-      po3: false,
+      pois: [false, false, false],
     };
     this.toggle = this.toggle.bind(this);
   }
 
-  toggle(e) {
-    console.log( this.state );
-    console.log(e.target);
+  toggle(i) {
+    const { pois } = this.state;
+    pois[i] = !pois[i];
+    this.setState(pois);
   }
 
   render() {
@@ -26,9 +25,9 @@ class App extends Component {
         <div className="map" />
         <span>You&rsquo;ll have # starting options</span>
         <ul className="itinerary">
-          <POIEntry onClick={this.toggle} expand={this.state.poi1} />
-          <POIEntry onClick={this.toggle} expand={this.state.poi2} />
-          <POIEntry onClick={this.toggle} expand={this.state.poi3} />
+          <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0]} />
+          <POIEntry onClick={this.toggle} stopIndex={2} expand={this.state.pois[1]} />
+          <POIEntry onClick={this.toggle} stopIndex={3} expand={this.state.pois[2]} />
         </ul>
         <span>You&rsquo;ll end at</span>
         <span>See Important Information for details</span>
