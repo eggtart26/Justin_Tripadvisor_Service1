@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 const POIEntry = ({expand, stopIndex, onClick}) => {
 
   return (
-    <li className="itinerary--stop">
-      <span className="itinerary--stopIndex">{stopIndex}</span>
-      <span className="itinerary--title">Name Of Attraction</span>
+    <li className="tour__item">
+      <span className="tour__counter">{stopIndex}</span>
+      <span className="tour__title">Name Of Attraction</span>
       <div>
-        <span className="itinerary--duration">
+        <span className="tour__body">
           Stop: 4 hours
         </span>
         -
@@ -18,7 +18,7 @@ const POIEntry = ({expand, stopIndex, onClick}) => {
 
       <span onClick={() => { onClick(stopIndex - 1); }}> See details &amp; photo</span>
 
-      <div className={expand ? "itinerary--details itinerary--details__shown" : "itinerary--details itinerary--details__hidden"}>
+      <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
         <div className="rating">
           # reviews
         </div>
