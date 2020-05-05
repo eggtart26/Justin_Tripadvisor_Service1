@@ -1,42 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const POIEntry = () => (
-  <li className="itinerary--stop">
-    <span className="itinerary--title">Name Of Attraction</span>
-    <div>
-      <span className="itinerary--duration">
-        Stop: 4 hours
-      </span>
-      -
-      <span className="admission">
-        Admission included
-      </span>
-    </div>
+class POIEntry extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showDescription: false,
+    };
+  }
 
-    <div className="rating">
-      # reviews
-    </div>
+  render() {
+    const { showDescription } = this.state;
 
-    <img
-      src="#"
-      alt="alt text"
-    />
-    <span>
-      Description of the location goes here.
-    </span>
+    return (
+      <li className="itinerary--stop">
+        <span className="itinerary--title">Name Of Attraction</span>
+        <div>
+          <span className="itinerary--duration">
+            Stop: 4 hours
+          </span>
+          -
+          <span className="admission">
+            Admission included
+          </span>
+        </div>
 
-    <span>Read more|less</span>
+        <span>See details &amp; photo</span>
 
-    <div>
-      More about Name Of Attraction
-    </div>
+        <div className = {!showDescription ? 'hidden' : 'shown'}>
+          <div className="rating">
+            # reviews
+          </div>
 
-    <button type="button">
-      See details &amp; photo
-      <em />
-    </button>
+          <img
+            src="#"
+            alt="alt text"
+          />
+          <span>
+            Description of the location goes here.
+          </span>
 
-  </li>
-);
+          <span>Read more|less</span>
+
+          <button type="button">
+            More About Name Of Attraction
+          </button>
+
+        </div>
+      </li>
+    );
+  }
+}
 
 export default POIEntry;
