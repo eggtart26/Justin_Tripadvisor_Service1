@@ -1,40 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const POIEntry = () => (
-  <li>
-    <span>Name Of Attraction</span>
-    <span className="stopduration">
-      Stop: 4 hours
-    </span>
-    -
-    <span className="admission">
-      Admission included
-    </span>
+const POIEntry = ({expand, stopIndex, onClick}) => {
 
-    <div className="rating">
-      # reviews
-    </div>
+  return (
+    <li className="tour__item">
+      <span className="tour__counter">{stopIndex}</span>
+      <span className="tour__title">Name Of Attraction</span>
+      <div>
+        <span className="tour__body">
+          Stop: 4 hours
+        </span>
+        -
+        <span className="admission">
+          Admission included
+        </span>
+      </div>
 
-    <img
-      src="#"
-      alt="alt text"
-    />
-    <span>
-      Description of the location goes here.
-    </span>
+      <span onClick={() => { onClick(stopIndex - 1); }}> See details &amp; photo</span>
 
-    <span>Read more|less</span>
+      <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
+        <div className="rating">
+          # reviews
+        </div>
 
-    <div>
-      More about Name Of Attraction
-    </div>
+        <img
+          src="#"
+          alt="alt text"
+        />
+        <span>
+          Description of the location goes here.
+        </span>
 
-    <span>
-      See details &amp; photo
-      <em />
-    </span>
+        <span>Read more|less</span>
 
-  </li>
-);
+        <button type="button">
+          More About Name Of Attraction
+        </button>
+      </div>
+    </li>
+  );
+};
+
 
 export default POIEntry;

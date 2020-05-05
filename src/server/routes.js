@@ -4,7 +4,7 @@ const ctlr = require('./database/controller');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '..', 'dist')));
+app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
 
 app.get('/tour/:id', (req, res) => {
   // This route will look up a tour by ID and send the relevant data.
@@ -25,7 +25,7 @@ app.get('/tour/:id', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
 });
 
 module.exports = app;

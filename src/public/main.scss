@@ -1,0 +1,95 @@
+$black: rgb(44,44,44);
+$bold: 700; 
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial';
+  -webkit-font-smoothing:antialiased;
+}
+*:focus {
+  outline: none;
+}
+
+h1, h2, h3, p, span {
+  color: $black;
+}
+
+p, span {
+  font-weight: 100;
+}
+
+html, body {
+  background-color: #f2f2f2;
+}
+
+.block {
+  background-color: #ffffff;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 2px;
+}
+
+.tour {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.tour__item {
+  display: flex;
+  padding: 6px;
+  padding-bottom: 12px;
+  flex-direction: column;
+  cursor: pointer;
+  cursor: hand;
+    font-size: 12px;
+}
+
+.tour__details {
+  max-height: 500px;
+  overflow-y: hidden;
+  transform: translate3d(0, 0, 0);  
+  transition: max-height .5s;
+  overflow-y: hidden;
+}
+
+.tour__details--hidden {
+  max-height: 0;
+  overflow-y: hidden;
+}
+
+.tour__title {
+  font-weight: $bold;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  border: 1px solid $black;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: $bold;
+  cursor: pointer;
+  cursor: hand;
+}
+
+button:hover {
+  background-color: #d6d6d6;
+}
+button:active {
+  background-color: #adadad;
+}
+button:focus {
+  outline: $black solid 1px;
+  outline-offset: -4px;
+}
+
+
+ul {
+ li {
+  list-style-type: none;
+  }
+}
+

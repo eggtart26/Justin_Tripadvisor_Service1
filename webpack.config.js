@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'public', 'js', 'main.jsx'),
@@ -6,19 +7,31 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: [{
-          loader: 'babel-loader',
-          query: {
-            presets: ['@babel/preset-react'],
-          },
-        }],
+        use: 'babel-loader',
+      },
+      {
+        test: /\.scss$/,
+        loader: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
-};
+  mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new MiniCSSExtractPlugin({
+      filename: '[name].css',
+      chunkFileName: '[id].css',
+    }),
+  ],
+}
