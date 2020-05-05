@@ -46,10 +46,21 @@ html, body {
       font-size: 12px;
   }
   
-  .hidden {
-    height: 0;
+  .itinerary--details {
     overflow-y: hidden;
+    transform: translate3d(0, 0, 0);  
+    transition: max-height .5s;
   }
+
+  .itinerary--details__shown {
+    max-height: 500px;
+  }
+
+  .itinerary--details__hidden {
+    max-height: 0;
+  }
+
+
   .itinerary--title {
     font-weight: $bold;
     font-size: 16px;

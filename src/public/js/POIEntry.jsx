@@ -18,7 +18,7 @@ const POIEntry = ({expand, stopIndex, onClick}) => {
 
       <span onClick={() => { onClick(stopIndex - 1); }}> See details &amp; photo</span>
 
-      <div className={expand ? "shown" : "hidden"}>
+      <div className={expand ? "itinerary--details itinerary--details__shown" : "itinerary--details itinerary--details__hidden"}>
         <div className="rating">
           # reviews
         </div>
