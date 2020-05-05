@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import POIEntry from './POIEntry';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 class App extends Component {
   constructor(props) {
@@ -25,9 +26,17 @@ class App extends Component {
         <div className="map" />
         <span>You&rsquo;ll have # starting options</span>
         <ul className="itinerary">
+          <Link to="stop1" spy={true} smooth={true} offset={-16} duration={500} id="stop1">
           <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0]} />
+          </Link>
+
+          <Link to="stop2" spy={true} smooth={true} offset={-16} duration={500} id="stop2">
           <POIEntry onClick={this.toggle} stopIndex={2} expand={this.state.pois[1]} />
+          </Link>
+
+          <Link to="stop3" spy={true} smooth={true} offset={-15} duration={500} id="stop3">
           <POIEntry onClick={this.toggle} stopIndex={3} expand={this.state.pois[2]} />
+          </Link>
         </ul>
         <span>You&rsquo;ll end at</span>
         <span>See Important Information for details</span>

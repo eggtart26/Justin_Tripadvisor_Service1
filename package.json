@@ -49,6 +49,7 @@
     "pg-hstore": "^2.3.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-scroll": "^1.7.16",
     "sass-loader": "^8.0.2",
     "sequelize": "^5.21.7",
     "style-loader": "^1.2.1",
