@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-
-import POIEntry from './POIEntry.jsx';
+import POIEntry from './POIEntry';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      poi1: false,
+      poi2: false,
+      po3: false,
+    };
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle(e) {
+    console.log( this.state );
+    console.log(e.target);
   }
 
   render() {
@@ -17,9 +26,9 @@ class App extends Component {
         <div className="map" />
         <span>You&rsquo;ll have # starting options</span>
         <ul className="itinerary">
-          <POIEntry />
-          <POIEntry />
-          <POIEntry />
+          <POIEntry onClick={this.toggle} expand={this.state.poi1} />
+          <POIEntry onClick={this.toggle} expand={this.state.poi2} />
+          <POIEntry onClick={this.toggle} expand={this.state.poi3} />
         </ul>
         <span>You&rsquo;ll end at</span>
         <span>See Important Information for details</span>

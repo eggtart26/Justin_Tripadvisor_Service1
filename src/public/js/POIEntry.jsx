@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 
 class POIEntry extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showDescription: false,
-    };
-
-    this.toggleView = this.toggleView.bind(this);
-  }
-
-  toggleView() {
-    const view = this.state.showDescription;
-    this.setState({ showDescription: !view });
-  }
-
+ 
   render() {
-    const { showDescription } = this.state;
+    const { expand, onClick } = this.props; 
+    
     return (
       <li className="itinerary--stop">
         <span className="itinerary--title">Name Of Attraction</span>
@@ -30,9 +18,9 @@ class POIEntry extends Component {
           </span>
         </div>
 
-        <span onClick={this.toggleView}>See details &amp; photo</span>
+        <span>See details &amp; photo</span>
 
-        <div className={!showDescription ? 'hidden' : 'shown'}>
+        <div>
           <div className="rating">
             # reviews
           </div>
