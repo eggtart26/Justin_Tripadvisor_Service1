@@ -25,6 +25,8 @@ class App extends Component {
 
   render() {
 
+    const pois = this.state.pois;
+
     return (
       <div className="block">
         <h1>Overview</h1>
@@ -37,17 +39,11 @@ class App extends Component {
         <GoogleMap attractions={tour.Attractions} />
         <ul className="itinerary">
 
-          <Link to="stop1" spy={true} smooth={true} offset={-16} duration={500} id="stop1">
-          <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0].display ? this.state.pois[0].display : false} />
-          </Link>
-
-          <Link to="stop2" spy={true} smooth={true} offset={-16} duration={500} id="stop2">
-          <POIEntry onClick={this.toggle} stopIndex={2} expand={this.state.pois[1].display ? this.state.pois[1].display : false }/>
-          </Link>
-
-          <Link to="stop3" spy={true} smooth={true} offset={-15} duration={500} id="stop3">
-          <POIEntry onClick={this.toggle} stopIndex={3} expand={this.state.pois[2].display ? this.state.pois[2].display : false }/>
-          </Link>
+          {pois.map((poi, index) => {
+            return (
+              <POIEntry key={`poi${index}`} onClick={this.toggle} data={poi} expand={poi.display ? poi.display : false} stopIndex={index + 1} />
+            )
+          })}
         </ul>
         <span>You&rsquo;ll end at</span>
         <span>See Important Information for details</span>
