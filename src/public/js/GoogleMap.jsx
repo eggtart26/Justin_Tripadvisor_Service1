@@ -21,20 +21,24 @@ class GoogleMap extends Component {
     const centerOn = {
       lat: attractions[0].latitude,
       lng: attractions[0].longitude
-    }
-    var centerMap = {
+    };
 
-    }
+
     var map = new window.google.maps.Map(this.googleMapRef.current, {
-      zoom: 4,
+      zoom: 11,
       center: centerOn,
       disableDefaultUI: true,
     })
 
-    new window.google.maps.Marker({
-      position: centerOn,
-      map: map
-    });
+    for (let i = 0; i < attractions.length; i += 1) {
+      const pin = new window.google.maps.Marker({
+        position: {
+          lat: attractions[i].latitude,
+          lng: attractions[i].longitude,
+        },
+        map: map,
+      });
+    }
   }
 
 
