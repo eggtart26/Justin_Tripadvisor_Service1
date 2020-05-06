@@ -32,7 +32,7 @@ class App extends Component {
         <div className="map" />
         <span>You&rsquo;ll have # starting options</span>
 
-        <GoogleMap attractions={tour.dummydata.Attractions} />
+        <GoogleMap attractions={tour.Attractions} />
         <ul className="itinerary">
           <Link to="stop1" spy={true} smooth={true} offset={-16} duration={500} id="stop1">
           <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0]} />
