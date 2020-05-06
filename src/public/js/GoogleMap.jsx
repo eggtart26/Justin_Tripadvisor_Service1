@@ -7,33 +7,41 @@ class GoogleMap extends Component {
     this.googleMapRef = createRef();
   }
 
-  createGoogleMap() {
-    var map = new window.google.maps.Map(this.googleMapRef.current, {
-      zoom: 16,
-      center: {
-        lat: 43.642567,
-        lng: -79.387054,
-      },
-      disableDefaultUI: true,
-    })
-
-    new window.google.maps.Marker({
-      position: { lat: 43.642567, lng: -79.387054 },
-      map: map
-    });
-  }
-
   componentDidMount() {
     const googleScript = document.createElement('script')
-    googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`;
+    googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${"sprinkles"}&libraries=places`;
     window.document.body.appendChild(googleScript)
     googleScript.addEventListener('load', ()=> {
       this.googleMap = this.createGoogleMap();
     });
   }
 
+  createGoogleMap() {
+    const attractions = this.props.attractions;
+    const centerOn = {
+      lat: attractions[0].latitude,
+      lng: attractions[0].longitude
+    }
+    var centerMap = {
+
+    }
+    var map = new window.google.maps.Map(this.googleMapRef.current, {
+      zoom: 4,
+      center: centerOn,
+      disableDefaultUI: true,
+    })
+
+    new window.google.maps.Marker({
+      position: centerOn,
+      map: map
+    });
+  }
+
+
 
   render() {
+
+    
     return (
       <div
         id="google-map"
