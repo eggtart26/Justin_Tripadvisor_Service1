@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import GoogleMap from './GoogleMap';
+
 
 class App extends Component {
   constructor(props) {
