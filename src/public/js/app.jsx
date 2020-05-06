@@ -23,10 +23,13 @@ class App extends Component {
     return (
       <div className="block">
         <h1>Overview</h1>
+
         <p>Overview paragraph will go here hip hip hooray.</p>
         <h2>Itinerary</h2>
         <div className="map" />
         <span>You&rsquo;ll have # starting options</span>
+
+        <GoogleMap />
         <ul className="itinerary">
           <Link to="stop1" spy={true} smooth={true} offset={-16} duration={500} id="stop1">
           <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0]} />
