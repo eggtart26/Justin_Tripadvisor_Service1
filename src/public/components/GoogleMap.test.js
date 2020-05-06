@@ -24,5 +24,4 @@ test('There should be a Marker method appended to the google map instance', () =
 });
 
 test('There should be one pin per tour attraction rendered to the map', () => {
-  const 
 })
