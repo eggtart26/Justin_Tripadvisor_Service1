@@ -8,16 +8,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pois: [false, false, false],
+      pois: tour.Attractions,
     };
     this.toggle = this.toggle.bind(this);
   }
 
-
-
   toggle(i) {
     const { pois } = this.state;
-    pois[i] = !pois[i];
+    if(pois[i].display != undefined) {
+      pois[i] = !pois[i];
+    } else {
+      pois[i].display = true;
+    }
     this.setState(pois);
   }
 
@@ -34,16 +36,17 @@ class App extends Component {
 
         <GoogleMap attractions={tour.Attractions} />
         <ul className="itinerary">
+
           <Link to="stop1" spy={true} smooth={true} offset={-16} duration={500} id="stop1">
-          <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0]} />
+          <POIEntry onClick={this.toggle} stopIndex={1} expand={this.state.pois[0].display ? this.state.pois[0].display : false} />
           </Link>
 
           <Link to="stop2" spy={true} smooth={true} offset={-16} duration={500} id="stop2">
-          <POIEntry onClick={this.toggle} stopIndex={2} expand={this.state.pois[1]} />
+          <POIEntry onClick={this.toggle} stopIndex={2} expand={this.state.pois[1].display ? this.state.pois[1].display : false }/>
           </Link>
 
           <Link to="stop3" spy={true} smooth={true} offset={-15} duration={500} id="stop3">
-          <POIEntry onClick={this.toggle} stopIndex={3} expand={this.state.pois[2]} />
+          <POIEntry onClick={this.toggle} stopIndex={3} expand={this.state.pois[2].display ? this.state.pois[2].display : false }/>
           </Link>
         </ul>
         <span>You&rsquo;ll end at</span>
