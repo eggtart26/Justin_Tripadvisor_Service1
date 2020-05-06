@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
-const POIEntry = ({expand, stopIndex, onClick}) => {
+import Rating from './rating';
+const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
   return (
     <li className="tour__item">
       <span className="tour__counter">{stopIndex}</span>
-      <span className="tour__title">Name Of Attraction</span>
+      <span className="tour__title">{data.name}</span>
       <div>
         <span className="tour__body">
           Stop: 4 hours
@@ -20,6 +20,7 @@ const POIEntry = ({expand, stopIndex, onClick}) => {
 
       <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
         <div className="rating">
+          <Rating score={data.rating} />
           # reviews
         </div>
 
@@ -28,7 +29,7 @@ const POIEntry = ({expand, stopIndex, onClick}) => {
           alt="alt text"
         />
         <span>
-          Description of the location goes here.
+          {data.description}
         </span>
 
         <span>Read more|less</span>
