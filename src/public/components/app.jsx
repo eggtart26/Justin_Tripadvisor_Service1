@@ -43,9 +43,8 @@ class App extends Component {
 
             <List>
               {pois.map((poi, index) => (
-                <Link to={`stop${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`}>
+                <Link to={`stop${index}`}  key={`poi${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`}>
                   <POIEntry
-                    key={`poi${index}`}
                     onClick={this.toggle}
                     data={poi}
                     expand={poi.display ? poi.display : false}

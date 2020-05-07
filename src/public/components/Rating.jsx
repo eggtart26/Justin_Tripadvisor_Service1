@@ -6,12 +6,12 @@ const Rating = ({ score }) => {
   let rating = [0, 0, 0, 0, 0];
   const fullDots = Math.floor(score);
   for (let i = 0; i < fullDots; i += 1) {
-    rating[i] = 'full';
+    rating[i] = '12px';
   }
   const halfDots = score % 1;
   if (halfDots >= 0.25) {
     if (halfDots <= 0.75) {
-      rating[fullDots] = 'half';
+      rating[fullDots] = '6px';
     }
   }
 
@@ -19,11 +19,11 @@ const Rating = ({ score }) => {
 
   return (
     <span className="rating">
-      {rating.map((circle) => {
+      {rating.map((circle, index) => {
         return (
-          <RatingDot>
+          <RatingDot key={index}>
             {
-              circle === 'full' ? ( <FullRating /> ) : ( <HalfRating /> )
+              <RatingFiller ratingstyle={circle}/>
             }
           </RatingDot>
         );

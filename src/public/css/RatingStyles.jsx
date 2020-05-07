@@ -10,23 +10,15 @@ const RatingDot = styled.span`
   overflow: hidden;
   margin: 0px 1px;
 `;
-
+// opacity: ${props => (props.displayme ? "1" : "0")};
 const RatingFiller = styled.span`
+  width: ${ props => props.ratingstyle };
   height: 12px;
   display: block;
   background-color: #00a680;
 `;
 
-const HalfRating = styled(RatingFiller)`
-  width:6px;
-`;
-
-const FullRating = styled(RatingFiller)`
-  width: 12px;
-`;
-
 export {
   RatingDot,
-  HalfRating,
-  FullRating,
+  RatingFiller,
 };
