@@ -6,7 +6,7 @@ const controller = require('./database/controller');
 
 http = http.Server(app);
 
-const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
+const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || true };
 
 // If force is true, Sequelize will drop all tables and re-add whatever is in models
 // when the server starts.  This option should be put to 'false' in production!

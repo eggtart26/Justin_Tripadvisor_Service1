@@ -68,3 +68,17 @@ describe('POI Entry component', () => {
     pagelink.contains({linktext});
   });
 });
+
+xdescribe('Unsplash terms', () =>{
+  test('Photos are hotlinked to the original image URL', () => {
+
+  });
+
+  test('Attribute photographer and Unsplash', () =>{
+
+  });
+
+  test('Photographer’s full name and Unsplash are properly attributed and linked (ex: Photo by Annie Spratt on Unsplash)', () =>{
+
+  });
+})

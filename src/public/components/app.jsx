@@ -9,9 +9,7 @@ import { Block, List, LayoutRow, LayoutColumn } from '../css/layout';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pois: tour.Attractions,
-    };
+    this.state = tour;
     this.toggle = this.toggle.bind(this);
   }
 
@@ -27,7 +25,7 @@ class App extends Component {
 
   render() {
 
-    const pois = this.state.pois;
+    const pois = this.state.Attractions;
 
     return (
       <Block>

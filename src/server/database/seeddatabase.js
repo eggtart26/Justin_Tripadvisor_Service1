@@ -1,5 +1,7 @@
 const _ = require('underscore');
 const faker = require('faker');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function (models) {
   const cancellationPolicies = [
@@ -17,9 +19,7 @@ module.exports = function (models) {
 
   const lead = ['Enjoy A', 'Go On A', 'Take A', 'Beautiful', 'Windy', 'Wonderful', 'Starlight', 'Chaperoned', 'Virtual'];
   const conveyance = ['Walking', 'Beautiful', 'Bus', 'Bike', 'Hiking', 'Go-Kart', 'Wine Tour', 'Daydrinking', 'Strolling'];
-
   const tourTitleChunk = ['Tour Of', 'Through', 'Across', 'Around'];
-
   const localeName = ['San Francisco', 'SF', 'The Big Fran', 'The 7 x 7', 'Bay City'];
 
   const coords = {
@@ -28,6 +28,16 @@ module.exports = function (models) {
     south: 37.722464,
     west: -122.503719,
   };
+
+  // Acquire file paths to images on disk
+  var images = [];
+  const imagefolder = path.resolve(__dirname, '..', '..', 'public', 'img');
+
+  fs.readdirSync(imagefolder)
+  .forEach((filename) => {
+    console.log(`Reading ${filename}`);
+    images.push(filename)
+  });
 
   function pickrand(array) {
     const max = array.length -1;
@@ -58,13 +68,14 @@ module.exports = function (models) {
 
   // Make a batch of attractions:
   const attractions = [];
-  for (let i = 0; i < 400; i += 1) {
+  for (let i = 0; i < 100; i += 1) {
     const attraction = {
       name: faker.lorem.words(),
       latitude: Math.random() * (coords.north - coords.south) + coords.south,
       longitude: Math.random() * (coords.east - coords.west) + coords.west,
       description: faker.lorem.sentences(),
       rating: (Math.random(5 - 1) + 1).toFixed(1),
+      image_path: pickrand(images),
     };
     attractions.push(attraction);
   }
@@ -80,7 +91,7 @@ module.exports = function (models) {
       });
     })
     .then(() => {
-      for (let i = 0; i < 400; i += 1) {
+      for (let i = 0; i < 25; i += 1) {
         // A given tour is going to have an ID between 1 and 25
         const tour_id = _.random(1, 100);
         // a given attraction will have an ID between 1 and 100
