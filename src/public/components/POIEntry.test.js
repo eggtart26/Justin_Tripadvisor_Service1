@@ -23,13 +23,48 @@ describe('POI Entry component', () => {
     expect(wrapper).toExist();
   });
 
-  // By design, enzyme doesn't support event listeners since they're a Javascript
-  // implementation and not a React implementation. So, you'll have to do some
-  // Javascript and jest trickery in order to mimic the event listener.
+  test('It should contain the title of the POI', () => {
+    const poititle = data.name;
+    wrapper.contains(poititle);
+  });
+
+  xtest('It should communicate how long the tourist will be at that location', () => {
+  });
+
+  xtest('It should communicate admission information', () => {
+
+  });
+
+  test('It should depict the POI\'s review-based rating', () => {
+    const rating = wrapper.find('Rating');
+    expect(rating).toExist();
+  });
+
 
   test('It should have a functioning click handler to handle toggles', () => {
     expect(clickHandler).not.toHaveBeenCalled();
     wrapper.find('button').simulate('click');
     expect(clickHandler.mock.calls.length).toEqual(1);
+  });
+
+  test('The click handler prompt should contextually update e.g. "see more | less" ', () => {
+    expect(clickHandler).not.toHaveBeenCalled();
+    const button = wrapper.find('button');
+    const beforetext = button.text();
+    button.simulate('click');
+    const aftertext = button.text();
+    expect(beforetext).not.toEqual(aftertext);
+  });
+
+  test('It should have an image of the POI', () => {
+    const image = wrapper.find('img');
+    expect(image).toBeTruthy();
+    expect(image.prop('src')).toBeTruthy();
+  });
+
+  test('It should have a link to a page about the attraction itself', () => {
+    const pagelink = wrapper.find('a');
+    const linktext = data.name;
+    pagelink.contains({linktext});
   });
 });

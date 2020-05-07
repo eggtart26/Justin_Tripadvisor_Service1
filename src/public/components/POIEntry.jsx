@@ -17,7 +17,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </span>
       </div>
 
-      <LinkLikeButton 
+      <LinkLikeButton
         onClick={() => { onClick(stopIndex - 1); }}
       >
         See details &amp; photo
@@ -29,8 +29,8 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </div>
 
         <img
-          src="#"
-          alt="alt text"
+          src={data.image_path}
+          alt={data.image_alt}
         />
         <span>
           {data.description}
@@ -38,7 +38,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
         <span>Read more|less</span>
 
-        <ButtonLikeLink href="#">
+        <ButtonLikeLink href="/attractions/fakeroute">
           More About {data.name}
         </ButtonLikeLink>
       </TourDetails>
