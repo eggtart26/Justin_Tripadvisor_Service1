@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import GlobalFonts from '../fonts/fonts.js';
 import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
+import { Block } from '../css/mainstyles';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class App extends Component {
     const pois = this.state.pois;
 
     return (
-      <div className="block">
+      <Block>
         <h1>Overview</h1>
 
         <p>Overview paragraph will go here hip hip hooray.</p>
@@ -47,7 +49,8 @@ class App extends Component {
         </ul>
         <span>You&rsquo;ll end at</span>
         <span>See Important Information for details</span>
-      </div>
+        <GlobalFonts />
+      </Block>
     );
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { RatingDot, RatingFiller, HalfRating, FullRating } from '../css/styles';
+import { RatingDot, RatingFiller, HalfRating, FullRating } from '../css/RatingStyles';
 
 const Rating = ({ score }) => {
   let rating = [0, 0, 0, 0, 0];

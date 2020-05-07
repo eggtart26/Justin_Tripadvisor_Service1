@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { AccordionPrompt } from '../css/styles';
+import { AccordionPrompt } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
