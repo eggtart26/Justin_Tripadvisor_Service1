@@ -40,11 +40,17 @@ class App extends Component {
           <LayoutColumn>
             <span>You&rsquo;ll have # starting options</span>
             <ul className="itinerary">
-              {pois.map((poi, index) => {
-                return (
-                  <POIEntry key={`poi${index}`} onClick={this.toggle} data={poi} expand={poi.display ? poi.display : false} stopIndex={index + 1} />
-                );
-              })}
+              {pois.map((poi, index) => (
+                <Link to={`stop${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`}>
+                  <POIEntry
+                    key={`poi${index}`}
+                    onClick={this.toggle}
+                    data={poi}
+                    expand={poi.display ? poi.display : false}
+                    stopIndex={index + 1}
+                  />
+                </Link>
+              ))}
             </ul>
             <span>You&rsquo;ll end at</span>
             <span>See Important Information for details</span>
