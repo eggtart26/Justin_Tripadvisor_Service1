@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
 import { AccordionPrompt } from '../css/POIStyles';
+import { Button } from '../css/mainstyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
@@ -39,9 +40,9 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
         <span>Read more|less</span>
 
-        <button type="button">
+        <Button type="button">
           More About Name Of Attraction
-        </button>
+        </Button>
       </div>
     </li>
   );
