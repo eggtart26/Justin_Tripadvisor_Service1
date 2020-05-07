@@ -15,6 +15,7 @@ const Block = styled.section`
 `;
 
 const Button = styled.button`
+  display: block;
   padding: 8px 16px;
   border: 1px solid #000000;
   border-radius: 3px;
@@ -22,7 +23,20 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   cursor: hand;
-`
+
+  &:hover {
+    background-color: #d6d6d6;
+  }
+
+  &:focus {
+    outline: $black solid 1px;
+    outline-offset: -4px;
+  }
+
+  &:active {
+    background-color: #adadad;
+  }
+`;
 
 export {
   Block,

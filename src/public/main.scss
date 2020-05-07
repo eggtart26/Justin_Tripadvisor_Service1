@@ -57,18 +57,6 @@ html, body {
 }
 
 
-button:hover {
-  background-color: #d6d6d6;
-}
-button:active {
-  background-color: #adadad;
-}
-button:focus {
-  outline: $black solid 1px;
-  outline-offset: -4px;
-}
-
-
 ul {
  li {
   list-style-type: none;
