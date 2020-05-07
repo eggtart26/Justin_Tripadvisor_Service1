@@ -21,7 +21,7 @@ const Rating = ({ score }) => {
   return (
     <span className="rating">
       {rating.map((circle) => {
-        return <div className={ circle === 0 ? 'rating--empty' : `rating${circle}` }/>
+        return <div className={circle === 0 ? 'rating__dot rating--empty' : `rating__dot rating--${circle}` }/>
       })}
     </span>
   
