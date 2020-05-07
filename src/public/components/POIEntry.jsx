@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-const POIEntry = ({data, expand, stopIndex, onClick}) => {
+import { AccordionPrompt } from '../css/styles';
 
+const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
     <li className="tour__item">
       <span className="tour__counter">{stopIndex}</span>
@@ -16,7 +17,11 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </span>
       </div>
 
-      <span onClick={() => { onClick(stopIndex - 1); }}> See details &amp; photo</span>
+      <AccordionPrompt
+        onClick={() => { onClick(stopIndex - 1); }}
+      >
+        See details &amp; photo
+      </AccordionPrompt>
 
       <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
         <div className="rating">

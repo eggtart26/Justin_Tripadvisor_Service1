@@ -25,8 +25,14 @@ const FullRating = styled(RatingFiller)`
   width: 12px;
 `;
 
+const AccordionPrompt = styled.span`
+  display: inline-block;
+  text-decoration: underline dotted #d6d6d6;
+`;
+
 export {
   RatingDot,
   HalfRating,
   FullRating,
+  AccordionPrompt,
 };
