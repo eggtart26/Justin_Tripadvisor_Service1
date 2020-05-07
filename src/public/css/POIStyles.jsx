@@ -5,6 +5,22 @@ const AccordionPrompt = styled.span`
   text-decoration: underline dotted #d6d6d6;
 `;
 
+const TourItem = styled.li`
+  display: flex;
+  padding: 6px;
+  padding-bottom: 12px;
+  flex-direction: column;
+  cursor: pointer;
+  cursor: hand;
+  font-size: 12px;
+`;
+
+const TourTitle = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+`
+
 const TourDetails = styled.div`
   opacity: ${props => (props.displayme ? "1" : "0")};
   max-height: ${props => (props.displayme ? "500px" : "0")};
@@ -17,4 +33,6 @@ const TourDetails = styled.div`
 export {
   AccordionPrompt,
   TourDetails,
+  TourItem,
+  TourTitle,
 };

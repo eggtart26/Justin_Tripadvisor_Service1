@@ -1,5 +1,7 @@
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef } from 'react';
 import apikey from '../../config.js';
+import { MyMapContainer } from '../css/MapStyles';
+
 class GoogleMap extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class GoogleMap extends Component {
       lng: attractions[0].longitude
     };
 
-    var map = new window.google.maps.Map(this.googleMapRef.current, {
+    const map = new window.google.maps.Map(this.googleMapRef.current, {
       zoom: 11,
       center: centerOn,
       disableDefaultUI: true,
@@ -47,13 +49,24 @@ class GoogleMap extends Component {
   }
 
   render() {
+
+    const mapStyle ={
+      width: '350px',
+      height: '350px',
+      marginRight: '8px',
+      top: '12px',
+      zIndex: 1,
+      position: 'sticky !important'
+    }
+
     return (
+      <MyMapContainer>
       <div
         id="google-map"
         ref={this.googleMapRef}
-        style={{width: '400px', height: '400px'}}
-      >
-      </div>
+        style={{width: '100%', height: '100%'}}
+      />
+      </MyMapContainer>
     );
   }
 }

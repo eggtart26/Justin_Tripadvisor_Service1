@@ -1,14 +1,6 @@
 /*
 
 
-p, span {
-  font-weight: 100;
-}
-
-html, body {
-  background-color: #f2f2f2;
-}
-
 .tour {
   display: flex;
   flex-direction: column;
@@ -16,12 +8,7 @@ html, body {
 }
 
 .tour__item {
-  display: flex;
-  padding: 6px;
-  padding-bottom: 12px;
-  flex-direction: column;
-  cursor: pointer;
-  cursor: hand;
+ 
     font-size: 12px;
 }
 
@@ -36,18 +23,6 @@ html, body {
 .tour__details--hidden {
   max-height: 0;
   overflow-y: hidden;
-}
-
-.tour__title {
-  font-weight: $bold;
-  font-size: 16px;
-}
-
-
-ul {
- li {
-  list-style-type: none;
-  }
 }
 
 .rating {

@@ -4,7 +4,7 @@ import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
-import { Block, LayoutRow, LayoutColumn } from '../css/layout';
+import { Block, List, LayoutRow, LayoutColumn } from '../css/layout';
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +39,9 @@ class App extends Component {
           <GoogleMap attractions={tour.Attractions} />
           <LayoutColumn>
             <span>You&rsquo;ll have # starting options</span>
-            <ul className="itinerary">
+            <span>See Important Information for details</span>
+
+            <List>
               {pois.map((poi, index) => (
                 <Link to={`stop${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`}>
                   <POIEntry
@@ -51,7 +53,7 @@ class App extends Component {
                   />
                 </Link>
               ))}
-            </ul>
+            </List>
             <span>You&rsquo;ll end at</span>
             <span>See Important Information for details</span>
           </LayoutColumn>

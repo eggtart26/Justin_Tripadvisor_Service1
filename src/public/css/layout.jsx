@@ -14,6 +14,13 @@ const Block = styled.section`
   margin: 12px;
 `;
 
+const List = styled.ul`
+  border-top: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid rgb(224, 224, 224);
+  border-left: 4px dotted rgb(24, 24, 24);
+  padding: 4px 8px;
+`;
+
 const Flex = styled.div`
   display: flex;
 `;
@@ -28,6 +35,7 @@ const LayoutColumn = styled(Flex)`
 
 export {
   Block,
+  List,
   LayoutRow,
   LayoutColumn,
 }

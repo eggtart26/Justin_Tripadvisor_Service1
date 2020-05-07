@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { AccordionPrompt, TourDetails } from '../css/POIStyles';
+import { AccordionPrompt, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
-    <li className="tour__item">
+    <TourItem>
       <span className="tour__counter">{stopIndex}</span>
-      <span className="tour__title">{data.name}</span>
+      <TourTitle>{data.name}</TourTitle>
       <div>
         <span className="tour__body">
           Stop: 4 hours
@@ -40,10 +40,10 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         <span>Read more|less</span>
 
         <button type="button">
-          More About Name Of Attraction
+          More About {data.name}
         </button>
       </TourDetails>
-    </li>
+    </TourItem>
   );
 };
 
