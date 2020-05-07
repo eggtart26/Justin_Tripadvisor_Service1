@@ -97,28 +97,4 @@ ul {
   display: block;
 }
 
-.rating__dot{
-  box-sizing: border-box;
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 1.25px solid #00a680;
-  overflow: hidden;
-  margin: 0px 1px;
-}
-
-.rating--half{
-box-sizing: border-box;
-  display: inline-block;
-  background-color: green;
-  height: 12px; width:6px;
-  background-color: #00a680;
-}
-
-.rating--full{
-  display: inline-block;
-  background-color: #00a680;
-  height: 12px; width:12px;
-}
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Rating from './rating';
+import Rating from './Rating';
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
   return (

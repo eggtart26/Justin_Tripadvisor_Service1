@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { RatingDot, RatingFiller, HalfRating, FullRating } from '../css/styles';
+
 const Rating = ({ score }) => {
   let rating = [0, 0, 0, 0, 0];
   const fullDots = Math.floor(score);
@@ -20,9 +22,11 @@ const Rating = ({ score }) => {
     <span className="rating">
       {rating.map((circle) => {
         return (
-          <div className='rating__dot'>
-            <div className ={`rating--${circle}`} />
-          </div>
+          <RatingDot>
+            {
+              circle === 'full' ? ( <FullRating /> ) : ( <HalfRating /> )
+            }
+          </RatingDot>
         );
       })}
     </span>
