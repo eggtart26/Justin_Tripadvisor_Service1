@@ -16,7 +16,7 @@ class App extends Component {
   toggle(i) {
     const { pois } = this.state;
     if(pois[i].display != undefined) {
-      pois[i] = !pois[i];
+      pois[i].display = !pois[i].display;
     } else {
       pois[i].display = true;
     }
