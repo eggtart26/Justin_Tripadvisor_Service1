@@ -23,7 +23,6 @@ const Rating = ({ score, reviewcount }) => {
       {rating.map((circle, index) => {
         return (
           <RatingDot key={index}>
-
             {
               <RatingFiller ratingstyle={circle}/>
             }

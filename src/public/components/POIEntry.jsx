@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { AccordionPrompt, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
+import { LinkLikeButton, ButtonLikeLink, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
@@ -17,11 +17,11 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </span>
       </div>
 
-      <AccordionPrompt
+      <LinkLikeButton 
         onClick={() => { onClick(stopIndex - 1); }}
       >
         See details &amp; photo
-      </AccordionPrompt>
+      </LinkLikeButton>
 
       <TourDetails displayme={expand}>
         <div className="rating">
@@ -38,9 +38,9 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
         <span>Read more|less</span>
 
-        <button type="button">
+        <ButtonLikeLink href="#">
           More About {data.name}
-        </button>
+        </ButtonLikeLink>
       </TourDetails>
     </TourItem>
   );

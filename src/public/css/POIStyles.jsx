@@ -1,8 +1,42 @@
 import styled from 'styled-components';
 
-const AccordionPrompt = styled.span`
-  display: inline-block;
+const LinkLikeButton = styled.button`
   text-decoration: underline dotted #d6d6d6;
+  border: none;
+  font-size: 12px;
+  font-weight: 200;
+  margin: 4px 0px;
+  padding: 0;
+  display: inline-block;
+  background: none!important;
+  text-align: left;
+`;
+
+const ButtonLikeLink = styled.a`
+  display: block;
+  padding: 8px 16px;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  cursor: hand;
+  text-align: center;
+  color: rgb(26,26,26);
+  text-decoration: none;
+
+    &:hover {
+      background-color: #d6d6d6;
+    }
+
+    &:focus {
+      outline: $black solid 1px;
+      outline-offset: -4px;
+    }
+
+    &:active {
+      background-color: #adadad;
+    }
 `;
 
 const TourItem = styled.li`
@@ -31,7 +65,8 @@ const TourDetails = styled.div`
 `;
 
 export {
-  AccordionPrompt,
+  LinkLikeButton,
+  ButtonLikeLink,
   TourDetails,
   TourItem,
   TourTitle,
