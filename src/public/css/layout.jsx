@@ -14,30 +14,6 @@ const Block = styled.section`
   margin: 12px;
 `;
 
-const Button = styled.button`
-  display: block;
-  padding: 8px 16px;
-  border: 1px solid #000000;
-  border-radius: 3px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  cursor: hand;
-
-  &:hover {
-    background-color: #d6d6d6;
-  }
-
-  &:focus {
-    outline: $black solid 1px;
-    outline-offset: -4px;
-  }
-
-  &:active {
-    background-color: #adadad;
-  }
-`;
-
 const Flex = styled.div`
   display: flex;
 `;
@@ -52,7 +28,6 @@ const LayoutColumn = styled(Flex)`
 
 export {
   Block,
-  Button,
   LayoutRow,
   LayoutColumn,
 }

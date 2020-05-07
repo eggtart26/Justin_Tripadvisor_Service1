@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import GlobalFonts from '../fonts/fonts.js';
+import GlobalStyles from '../css/globalstyles';
 import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
-import { Block, LayoutRow, LayoutColumn } from '../css/mainstyles';
+import { Block, LayoutRow, LayoutColumn } from '../css/layout';
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class App extends Component {
           </LayoutColumn>
         </LayoutRow>
 
-        <GlobalFonts />
+        <GlobalStyles />
       </Block>
     );
   }
