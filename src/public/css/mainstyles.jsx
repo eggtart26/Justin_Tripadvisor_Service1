@@ -38,7 +38,21 @@ const Button = styled.button`
   }
 `;
 
+const Flex = styled.div`
+  display: flex;
+`;
+
+const LayoutRow = styled(Flex)`
+  flex-direction: row;
+`;
+
+const LayoutColumn = styled(Flex)`
+  flex-direction: column;
+`;
+
 export {
   Block,
-  Button
+  Button,
+  LayoutRow,
+  LayoutColumn,
 }

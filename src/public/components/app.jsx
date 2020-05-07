@@ -4,7 +4,7 @@ import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
-import { Block } from '../css/mainstyles';
+import { Block, LayoutRow, LayoutColumn } from '../css/mainstyles';
 
 class App extends Component {
   constructor(props) {
@@ -35,20 +35,22 @@ class App extends Component {
 
         <p>Overview paragraph will go here hip hip hooray.</p>
         <h2>Itinerary</h2>
-        <div className="map" />
-        <span>You&rsquo;ll have # starting options</span>
+        <LayoutRow>
+          <GoogleMap attractions={tour.Attractions} />
+          <LayoutColumn>
+            <span>You&rsquo;ll have # starting options</span>
+            <ul className="itinerary">
+              {pois.map((poi, index) => {
+                return (
+                  <POIEntry key={`poi${index}`} onClick={this.toggle} data={poi} expand={poi.display ? poi.display : false} stopIndex={index + 1} />
+                );
+              })}
+            </ul>
+            <span>You&rsquo;ll end at</span>
+            <span>See Important Information for details</span>
+          </LayoutColumn>
+        </LayoutRow>
 
-        <GoogleMap attractions={tour.Attractions} />
-        <ul className="itinerary">
-
-          {pois.map((poi, index) => {
-            return (
-              <POIEntry key={`poi${index}`} onClick={this.toggle} data={poi} expand={poi.display ? poi.display : false} stopIndex={index + 1} />
-            )
-          })}
-        </ul>
-        <span>You&rsquo;ll end at</span>
-        <span>See Important Information for details</span>
         <GlobalFonts />
       </Block>
     );
