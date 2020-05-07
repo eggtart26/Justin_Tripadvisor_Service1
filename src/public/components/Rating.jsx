@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RatingDot, RatingFiller, HalfRating, FullRating } from '../css/RatingStyles';
 
-const Rating = ({ score }) => {
+const Rating = ({ score, reviewcount }) => {
   let rating = [0, 0, 0, 0, 0];
   const fullDots = Math.floor(score);
   for (let i = 0; i < fullDots; i += 1) {
@@ -28,6 +28,7 @@ const Rating = ({ score }) => {
           </RatingDot>
         );
       })}
+       {reviewcount} reviews
     </span>
   );
 };

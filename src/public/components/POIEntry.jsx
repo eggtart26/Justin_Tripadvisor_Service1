@@ -25,8 +25,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
       <TourDetails displayme={expand}>
         <div className="rating">
-          <Rating score={data.rating} />
-          # reviews
+          <Rating score={data.rating} reviewcount={53} />
         </div>
 
         <img
