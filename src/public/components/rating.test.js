@@ -16,4 +16,8 @@ describe('Rating Component', () => {
     wrapper.contains('50 reviews');
   });
 
+  test('It contain a textual representation fo the review score for screen readers', () => {
+    wrapper.contains('Rating of 5 out of 5');
+  });
+
 });

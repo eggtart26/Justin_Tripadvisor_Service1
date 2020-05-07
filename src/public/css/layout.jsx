@@ -33,9 +33,22 @@ const LayoutColumn = styled(Flex)`
   flex-direction: column;
 `;
 
+// A "SR*" class for screen reader use/accessibility. 
+const SRSpan = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+`;
+
 export {
   Block,
   List,
   LayoutRow,
   LayoutColumn,
+  SRSpan
 }

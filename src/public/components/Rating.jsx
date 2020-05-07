@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RatingDot, RatingFiller, HalfRating, FullRating } from '../css/RatingStyles';
+import { RatingDot, RatingFiller, HalfRating, FullRating} from '../css/RatingStyles';
+import { SRSpan } from '../css/layout'
 
 const Rating = ({ score, reviewcount }) => {
   let rating = [0, 0, 0, 0, 0];
@@ -22,13 +23,15 @@ const Rating = ({ score, reviewcount }) => {
       {rating.map((circle, index) => {
         return (
           <RatingDot key={index}>
+
             {
               <RatingFiller ratingstyle={circle}/>
             }
           </RatingDot>
         );
       })}
-       {reviewcount} reviews
+      <SRSpan>Rating of {score} out of 5</SRSpan>
+      {reviewcount} reviews
     </span>
   );
 };
