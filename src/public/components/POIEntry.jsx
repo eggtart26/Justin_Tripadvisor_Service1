@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { AccordionPrompt } from '../css/POIStyles';
+import { AccordionPrompt, TourDetails } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
@@ -23,7 +23,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         See details &amp; photo
       </AccordionPrompt>
 
-      <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
+      <TourDetails displayme={expand}>
         <div className="rating">
           <Rating score={data.rating} />
           # reviews
@@ -42,7 +42,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         <button type="button">
           More About Name Of Attraction
         </button>
-      </div>
+      </TourDetails>
     </li>
   );
 };
