@@ -63,11 +63,28 @@ const TourItem = styled.li`
   font-size: 12px;
 `;
 
+const TourCounter = styled.span`
+  background: #4a4a4a;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  color: #ffffff;
+  font-weight: bold;
+  margin-left: -10px;
+  box-shadow: 0 0 0 3px #f9f9f9;
+  margin-top: -10px;
+  margin-left: -10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
 const TourTitle = styled.span`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 4px;
-`
+`;
 
 const TourDetails = styled.div`
   opacity: ${props => (props.displayme ? "1" : "0")};

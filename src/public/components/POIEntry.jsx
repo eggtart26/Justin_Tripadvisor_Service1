@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { LinkLikeButton, ButtonLike, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
+import { LinkLikeButton, ButtonLike, TourItem, TourTitle, TourCounter, TourDetails } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
     <TourItem>
-      <span className="tour__counter">{stopIndex}</span>
+      <TourCounter>{stopIndex}</TourCounter>
       <TourTitle>{data.name}</TourTitle>
       <div>
         <span className="tour__body">
