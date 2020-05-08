@@ -27,8 +27,9 @@ describe('Itinerary block', () => {
 
   // Unit test for this toggle method is in POI entry for individual POI.
   xtest('It should toggle the display of a given POI', () => {
-
     expect(toggle).not.toHaveBeenCalled();
+    wrapper.setState({ tour: { id: 1, Attractions: ['true'] } });
+    wrapper.update();
     let button = wrapper.find('button');
     button.simulate('click');
     expect(toggle).toHaveBeenCalled();

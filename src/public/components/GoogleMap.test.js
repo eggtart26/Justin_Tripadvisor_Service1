@@ -25,6 +25,11 @@ describe('Map Component', () => {
     googleMaps = createGoogleMapsMock();
   });
 
+  it('renders to the screen', () => {
+    const wrapper = shallow(<GoogleMap/>);
+    expect(wrapper).toExist();
+  });
+
   it('should have a Marker method appended to the google map instance', () => {
     expect(googleMaps.Marker).toBeTruthy();
   });
