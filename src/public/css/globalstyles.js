@@ -43,6 +43,14 @@ export default createGlobalStyle`
     }
   }
 
+  img {
+    width: 100%;
+  }
+
+  p {
+    padding: 12px 0;
+  }
+
   button {
   display: block;
   padding: 8px 16px;

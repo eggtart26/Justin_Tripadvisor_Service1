@@ -40,20 +40,10 @@ describe('POI Entry component', () => {
     expect(rating).toExist();
   });
 
-
   test('It should have a functioning click handler to handle toggles', () => {
     expect(clickHandler).not.toHaveBeenCalled();
     wrapper.find('button').simulate('click');
     expect(clickHandler.mock.calls.length).toEqual(1);
-  });
-
-  test('The click handler prompt should contextually update e.g. "see more | less" ', () => {
-    expect(clickHandler).not.toHaveBeenCalled();
-    const button = wrapper.find('button');
-    const beforetext = button.text();
-    button.simulate('click');
-    const aftertext = button.text();
-    expect(beforetext).not.toEqual(aftertext);
   });
 
   test('It should have an image of the POI', () => {

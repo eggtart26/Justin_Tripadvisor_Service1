@@ -10,6 +10,20 @@ const LinkLikeButton = styled.button`
   display: inline-block;
   background: none!important;
   text-align: left;
+
+  &::after {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid rgb(26, 26, 26);
+    display: inline-block;
+    line-height: 6px;
+    margin: 2px;
+    content: "";
+    transition: all 0.5s ease-in;
+    transform: rotate(${props => (props.expand ? "0" : "180")}deg);
+  }
 `;
 
 const ButtonLike = styled.span`
@@ -60,6 +74,7 @@ const TourDetails = styled.div`
   max-height: ${props => (props.displayme ? "500px" : "0")};
   overflow-y: hidden;
   transform: translate3d(0, 0, 0);  
+  -webkit-transform: translate3d(0, 0, 0);
   transition: all 0.5s ease-in;
   overflow-y: hidden;
 `;

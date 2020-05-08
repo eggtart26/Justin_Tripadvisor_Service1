@@ -17,12 +17,6 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </span>
       </div>
 
-      <LinkLikeButton
-        onClick={() => { onClick(stopIndex - 1); }}
-      >
-        See details &amp; photo
-      </LinkLikeButton>
-
       <TourDetails displayme={expand}>
         <div className="rating">
           <Rating score={data.rating} reviewcount={53} />
@@ -32,18 +26,19 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
           src={`/image/${data.image_path}`}
           alt={data.image_alt}
         />
-        <span>
+        <p>
           {data.description}
-        </span>
+        </p>
 
-        <span>Read more|less</span>
-
-        <ButtonLike>
-          <span href="/attractions/fakeroute">
-            More About {data.name}
-          </span>
+        <ButtonLike> 
+          More About {data.name}
         </ButtonLike>
       </TourDetails>
+
+      <LinkLikeButton expand={expand} onClick={() => { onClick(stopIndex - 1); }}>
+        {expand === true ? 'See less' : 'See details & photo'}
+      </LinkLikeButton>
+
     </TourItem>
   );
 };
