@@ -87,7 +87,7 @@ const TourCounter = styled.span`
   min-height: 20px
   max-width: 20px;
   max-height: 20px;
-  margin: 0 6px 0 -18px;
+  margin: 0 8px 0 -18px;
   box-sizing: border-box;
   border-radius: 100%;
   color: #ffffff;

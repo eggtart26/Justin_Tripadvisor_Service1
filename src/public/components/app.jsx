@@ -73,9 +73,10 @@ class App extends Component {
               </List>
             </Panel>
 
-            
-            <span>You&rsquo;ll end at</span>
-            <span>See Important Information for details</span>
+            <Panel>
+              <DisplayHeading>You&rsquo;ll end at</DisplayHeading>
+              <Link to="#">See Important Information for details</Link>
+            </Panel>
           </LayoutColumn>
         </LayoutRow>
 

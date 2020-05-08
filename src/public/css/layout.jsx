@@ -18,7 +18,7 @@ const Backdrop = styled.section`
 const List = styled.ul`
   border-left: 4px dotted rgb(24, 24, 24);
   padding: 8px 8px 8px 0px;
-  margin-left: -10px;
+  margin-left: 8px;
 `;
 
 const Flex = styled.div`
@@ -33,6 +33,9 @@ const Panel = styled.div`
   margin: 4px;
   padding: 8px;
   border-bottom: 1px solid rgb(224, 224, 224);
+  &:last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const LayoutColumn = styled(Flex)`
@@ -54,6 +57,7 @@ const SRSpan = styled.span`
 const DisplayHeading = styled.span`
   font-weight: bold;
   font-size: 18px;
+  display: block;
   margin-bottom: 4px;
 `;
 
