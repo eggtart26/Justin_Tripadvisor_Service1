@@ -21,7 +21,7 @@ module.exports = {
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.jsx$': 'babel-jest',
-    // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    '.+\\.(css|styl|less|sass|scss|jpeg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
   },
 
   testEnvironmentOptions: {

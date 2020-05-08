@@ -34,10 +34,9 @@ module.exports = function (models) {
   const imagefolder = path.resolve(__dirname, '..', '..', 'public', 'img');
 
   fs.readdirSync(imagefolder)
-  .forEach((filename) => {
-    console.log(`Reading ${filename}`);
-    images.push(filename)
-  });
+    .forEach((filename) => {
+      images.push(filename);
+    });
 
   function pickrand(array) {
     const max = array.length -1;
@@ -74,7 +73,7 @@ module.exports = function (models) {
       latitude: Math.random() * (coords.north - coords.south) + coords.south,
       longitude: Math.random() * (coords.east - coords.west) + coords.west,
       description: faker.lorem.sentences(),
-      rating: (Math.random(5 - 1) + 1).toFixed(1),
+      rating: (Math.random(5 - 3) + 1).toFixed(1),
       image_path: pickrand(images),
       image_alt: faker.lorem.words(),
     };

@@ -35,6 +35,7 @@
     "faker": "^4.1.0",
     "file-loader": "^6.0.0",
     "jest": "^25.5.4",
+    "jest-transform-stub": "^2.0.0",
     "mocha": "^7.1.2",
     "react-test-renderer": "^16.13.1",
     "webpack": "4.43.0",
