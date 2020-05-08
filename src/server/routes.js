@@ -24,6 +24,21 @@ app.get('/tour/:id', (req, res) => {
   });
 });
 
+app.get('/tour/', (req, res) => {
+  // This route will look up a tour by ID and send the relevant data.
+
+  ctlr.getRandomTour((err, data) => {
+    if (err) {
+      console.error(err);
+      res.writeHead(500);
+      res.end();
+      return;
+    }
+    res.writeHead(200);
+    res.end(JSON.stringify(data));
+  });
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'index.html'));
 });

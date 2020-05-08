@@ -5,6 +5,7 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
 import { Block, List, LayoutRow, LayoutColumn } from '../css/layout';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -15,12 +16,19 @@ class App extends Component {
 
   toggle(i) {
     const { pois } = this.state;
-    if(pois[i].display != undefined) {
+    if (pois[i].display != undefined) {
       pois[i].display = !pois[i].display;
     } else {
       pois[i].display = true;
     }
     this.setState(pois);
+  }
+
+  componentWillMount() {
+    axios.get('tour')
+    .then((data) => {
+      console.log(data);
+    });
   }
 
   render() {
