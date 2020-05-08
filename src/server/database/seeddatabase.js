@@ -31,7 +31,7 @@ module.exports = function (models) {
 
   // Acquire file paths to images on disk
   var images = [];
-  const imagefolder = path.resolve(__dirname, '..', '..', 'public', 'img');
+  const imagefolder = path.resolve(__dirname, '..', '..', 'public', 'img', 'gallery');
 
   fs.readdirSync(imagefolder)
     .forEach((filename) => {

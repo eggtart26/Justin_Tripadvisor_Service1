@@ -68,5 +68,6 @@ export {
   LayoutRow,
   LayoutColumn,
   SRSpan,
+  Pin,
   DisplayHeading
 }

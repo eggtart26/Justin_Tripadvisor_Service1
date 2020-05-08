@@ -4,7 +4,7 @@ import POIEntry from './POIEntry';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
-import { Backdrop, Panel, List, LayoutRow, LayoutColumn, DisplayHeading } from '../css/layout';
+import { Backdrop, Panel, List, LayoutRow, LayoutColumn, DisplayHeading, Pin } from '../css/layout';
 import axios from 'axios';
 
 class App extends Component {
@@ -45,6 +45,8 @@ class App extends Component {
     const about = this.state.tour;
     return (
       <Backdrop>
+
+      <Pin />
         <h1>Overview</h1>
         <p>{about.overview}</p>
         <h2>Itinerary</h2>
