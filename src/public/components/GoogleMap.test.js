@@ -26,7 +26,7 @@ describe('Map Component', () => {
   });
 
   it('renders to the screen', () => {
-    const wrapper = shallow(<GoogleMap/>);
+    const wrapper = shallow(<GoogleMap />);
     expect(wrapper).toExist();
   });
 
