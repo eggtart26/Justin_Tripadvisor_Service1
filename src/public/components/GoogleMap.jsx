@@ -29,7 +29,8 @@ class GoogleMap extends Component {
       zoom: 11,
       center: centerOn,
       disableDefaultUI: true,
-    })
+    });
+
 
     for (let i = 0; i < attractions.length; i += 1) {
       const pin = new window.google.maps.Marker({
@@ -38,7 +39,13 @@ class GoogleMap extends Component {
           lng: attractions[i].longitude,
           stopindex: i,
         },
-        map: map,
+        icon: {
+          url: '/image/itinerary_stop.png',
+          scaledSize: new google.maps.Size(35, 40),
+          origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 40),
+        },
+        map,
       });
 
       pin.addListener('click', function() {
