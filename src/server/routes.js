@@ -5,6 +5,7 @@ const ctlr = require('./database/controller');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '..', '..', 'dist')));
+app.use('/image/', express.static(path.join(__dirname, '..', 'public', 'img')));
 
 app.get('/tour/:id', (req, res) => {
   // This route will look up a tour by ID and send the relevant data.
@@ -26,7 +27,6 @@ app.get('/tour/:id', (req, res) => {
 
 app.get('/tour/', (req, res) => {
   // This route will look up a tour by ID and send the relevant data.
-
   ctlr.getRandomTour((err, data) => {
     if (err) {
       console.error(err);

@@ -29,7 +29,7 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
         </div>
 
         <img
-          src={data.image_path}
+          src={`/image/${data.image_path}`}
           alt={data.image_alt}
         />
         <span>
