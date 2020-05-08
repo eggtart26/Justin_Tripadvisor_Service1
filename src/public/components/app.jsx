@@ -10,12 +10,29 @@ import axios from 'axios';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = tour;
+    this.state = {
+      tour: {
+        Attractions: [],
+      }
+    };
     this.toggle = this.toggle.bind(this);
+    this.loadTour = this.loadTour.bind(this);
+  }
+
+  componentWillMount() {
+    axios.get('tour')
+      .then((response) => {
+        console.log(response.data);
+        this.loadTour(response.data);
+      });
+  }
+
+  loadTour(data) {
+    this.setState({ tour: data });
   }
 
   toggle(i) {
-    const { pois } = this.state;
+    const pois = this.state.tour.Attractions;
     if (pois[i].display != undefined) {
       pois[i].display = !pois[i].display;
     } else {
@@ -24,17 +41,8 @@ class App extends Component {
     this.setState(pois);
   }
 
-  componentWillMount() {
-    axios.get('tour')
-    .then((data) => {
-      console.log(data);
-    });
-  }
-
   render() {
-
-    const pois = this.state.Attractions;
-
+    const pois = this.state.tour.Attractions;
     return (
       <Block>
         <h1>Overview</h1>
@@ -49,14 +57,15 @@ class App extends Component {
 
             <List>
               {pois.map((poi, index) => (
-                <Link to={`stop${index}`}  key={`poi${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`}>
+                <div key={`poi${index}`}>
+                  <Link to={`stop${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`} />
                   <POIEntry
                     onClick={this.toggle}
                     data={poi}
                     expand={poi.display ? poi.display : false}
                     stopIndex={index + 1}
                   />
-                </Link>
+                </div>
               ))}
             </List>
             <span>You&rsquo;ll end at</span>

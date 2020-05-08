@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from './Rating';
-import { LinkLikeButton, ButtonLikeLink, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
+import { LinkLikeButton, ButtonLike, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
 
 const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
@@ -38,9 +38,11 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 
         <span>Read more|less</span>
 
-        <ButtonLikeLink href="/attractions/fakeroute">
-          More About {data.name}
-        </ButtonLikeLink>
+        <ButtonLike>
+          <span href="/attractions/fakeroute">
+            More About {data.name}
+          </span>
+        </ButtonLike>
       </TourDetails>
     </TourItem>
   );

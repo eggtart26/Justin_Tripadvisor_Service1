@@ -12,7 +12,7 @@ const LinkLikeButton = styled.button`
   text-align: left;
 `;
 
-const ButtonLikeLink = styled.a`
+const ButtonLike = styled.span`
   display: block;
   padding: 8px 16px;
   border: 1px solid #000000;
@@ -66,7 +66,7 @@ const TourDetails = styled.div`
 
 export {
   LinkLikeButton,
-  ButtonLikeLink,
+  ButtonLike,
   TourDetails,
   TourItem,
   TourTitle,

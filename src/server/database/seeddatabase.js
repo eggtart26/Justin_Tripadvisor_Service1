@@ -56,7 +56,7 @@ module.exports = function (models) {
 
   // Make a batch of tours:
   const tours = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 25; i += 1) {
     const tour = {
       name: makeTitle(),
       overview: faker.lorem.sentences(),
@@ -76,6 +76,7 @@ module.exports = function (models) {
       description: faker.lorem.sentences(),
       rating: (Math.random(5 - 1) + 1).toFixed(1),
       image_path: pickrand(images),
+      image_alt: faker.lorem.words(),
     };
     attractions.push(attraction);
   }
@@ -91,9 +92,9 @@ module.exports = function (models) {
       });
     })
     .then(() => {
-      for (let i = 0; i < 25; i += 1) {
+      for (let i = 0; i < 100; i += 1) {
         // A given tour is going to have an ID between 1 and 25
-        const tour_id = _.random(1, 100);
+        const tour_id = _.random(1, 25);
         // a given attraction will have an ID between 1 and 100
         const attraction_id = i;
         models.Attraction.findOne({
