@@ -20,15 +20,14 @@ class App extends Component {
   }
 
   componentWillMount() {
-    axios.get('tour')
-      .then((response) => {
-        console.log(response.data);
-        this.loadTour(response.data);
-      });
+    this.loadTour();
   }
 
-  loadTour(data) {
-    this.setState({ tour: data });
+  loadTour() {
+    axios.get('tour')
+      .then((response) => {
+        this.setState({ tour: response.data });
+      });
   }
 
   toggle(i) {
