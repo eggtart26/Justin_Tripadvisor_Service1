@@ -10,9 +10,12 @@ class GoogleMap extends Component {
   }
 
   componentDidMount() {
-    const googleScript = document.createElement('script')
+    const googleScript = document.createElement('script');
+    const labelScript = document.createElement('script');
     googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`;
-    window.document.body.appendChild(googleScript)
+    labelScript.src = `http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.9/src/markerwithlabel.js`;
+    window.document.body.appendChild(googleScript);
+    window.document.body.appendChild(labelScript);
     googleScript.addEventListener('load', ()=> {
       this.googleMap = this.createGoogleMap();
     });
@@ -31,6 +34,19 @@ class GoogleMap extends Component {
       disableDefaultUI: true,
     });
 
+    const defaultIcon = {
+      url: '/image/itinerary_stop.png',
+      scaledSize: new google.maps.Size(35, 40),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 40),
+    };
+
+    const activeIcon = {
+      url: '/image/itinerary_stop_active.png',
+      scaledSize: new google.maps.Size(35, 40),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 40),
+    };
 
     for (let i = 0; i < attractions.length; i += 1) {
       const pin = new window.google.maps.Marker({
@@ -39,18 +55,23 @@ class GoogleMap extends Component {
           lng: attractions[i].longitude,
           stopindex: i,
         },
-        icon: {
-          url: '/image/itinerary_stop.png',
-          scaledSize: new google.maps.Size(35, 40),
-          origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 40),
-        },
+        icon: defaultIcon,
         map,
+        label: (i + 1).toString(),
       });
 
       pin.addListener('click', function() {
         map.setZoom(14);
         map.setCenter(this.getPosition());
+        console.log( "YO!" + this.label);
+      });
+
+      pin.addListener('mouseover', function() {
+        this.setIcon(activeIcon);
+      });
+
+      pin.addListener('mouseout', function() {
+        this.setIcon(defaultIcon);
       });
     }
   }
@@ -68,11 +89,11 @@ class GoogleMap extends Component {
 
     return (
       <MyMapContainer>
-      <div
-        id="google-map"
-        ref={this.googleMapRef}
-        style={{width: '100%', height: '100%'}}
-      />
+        <div
+          id="google-map"
+          ref={this.googleMapRef}
+          style={{width: '100%', height: '100%'}}
+        />
       </MyMapContainer>
     );
   }
