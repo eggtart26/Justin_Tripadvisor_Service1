@@ -41,7 +41,7 @@ const Attraction = ({data, expand, stopIndex, onClick}) => {
               {data.description}
             </p>
 
-            <ButtonLike> 
+            <ButtonLike title={`Read more about ${data.name}`}> 
               More About {data.name}
             </ButtonLike>
           </TourDetails>
