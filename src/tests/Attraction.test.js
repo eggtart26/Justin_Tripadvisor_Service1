@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Attraction from '../public/components/Attraction';
-import dummydata from '../../dummydata.js';
+import dummydata from '../dummydata.js';
 
 
 describe('POI Entry component', () => {
