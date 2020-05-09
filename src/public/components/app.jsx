@@ -11,6 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoaded: false,
       tour: {
         Attractions: [],
       },
@@ -28,6 +29,7 @@ class App extends Component {
     axios.get('tour')
       .then((response) => {
         this.setState({ tour: response.data });
+        this.setState({isLoaded: true });
       });
   }
 
@@ -61,7 +63,7 @@ class App extends Component {
         <h2>Itinerary</h2>
 
         <LayoutRow>
-          <GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={tour.Attractions} />
+          {this.state.isLoaded ? (<GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={this.state.tour.Attractions} />) : null }
           <LayoutColumn>
             <Panel>
               <DisplayHeading>You&rsquo;ll have 3 starting options</DisplayHeading>
