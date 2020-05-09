@@ -1,3 +1,4 @@
+const sequelize = require('sequelize');
 const models = require('./models');
 
 const { Tour } = models;
@@ -10,6 +11,23 @@ module.exports.getTour = function (id, callback) {
     where: {
       id,
     },
+    include: [
+      {
+        model: models.Attraction,
+      },
+    ],
+  })
+    .then((tour) => {
+      callback(null, tour);
+    })
+    .catch((error) => {
+      callback(error, null);
+    });
+};
+
+module.exports.getRandomTour = function (callback) {
+  Tour.findOne({
+    order: sequelize.fn('random'),
     include: [
       {
         model: models.Attraction,

@@ -8,7 +8,6 @@ module.exports = function (sequelize, DataTypes) {
       rating: DataTypes.FLOAT,
       attraction_url: DataTypes.STRING,
       image_path: DataTypes.STRING,
-      image_filename: DataTypes.STRING,
       image_alt: DataTypes.STRING,
     },
     {

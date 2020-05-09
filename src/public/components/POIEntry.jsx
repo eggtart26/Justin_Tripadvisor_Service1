@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Rating from './Rating';
+import { LinkLikeButton, ButtonLike, TourItem, TourTitle, TourDetails } from '../css/POIStyles';
 
-const POIEntry = ({expand, stopIndex, onClick}) => {
-
+const POIEntry = ({data, expand, stopIndex, onClick}) => {
   return (
-    <li className="tour__item">
+    <TourItem>
       <span className="tour__counter">{stopIndex}</span>
-      <span className="tour__title">Name Of Attraction</span>
+      <TourTitle>{data.name}</TourTitle>
       <div>
         <span className="tour__body">
           Stop: 4 hours
@@ -16,28 +17,29 @@ const POIEntry = ({expand, stopIndex, onClick}) => {
         </span>
       </div>
 
-      <span onClick={() => { onClick(stopIndex - 1); }}> See details &amp; photo</span>
-
-      <div className={expand ? "tour__details" : "tour__details tour__details--hidden"}>
+      <TourDetails displayme={expand}>
         <div className="rating">
-          # reviews
+          <Rating score={data.rating} reviewcount={53} />
         </div>
 
         <img
-          src="#"
-          alt="alt text"
+          src={`/image/${data.image_path}`}
+          alt={data.image_alt}
         />
-        <span>
-          Description of the location goes here.
-        </span>
+        <p>
+          {data.description}
+        </p>
 
-        <span>Read more|less</span>
+        <ButtonLike> 
+          More About {data.name}
+        </ButtonLike>
+      </TourDetails>
 
-        <button type="button">
-          More About Name Of Attraction
-        </button>
-      </div>
-    </li>
+      <LinkLikeButton expand={expand} onClick={() => { onClick(stopIndex - 1); }}>
+        {expand === true ? 'See less' : 'See details & photo'}
+      </LinkLikeButton>
+
+    </TourItem>
   );
 };
 
