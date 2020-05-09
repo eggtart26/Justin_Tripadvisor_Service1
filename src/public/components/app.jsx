@@ -35,7 +35,6 @@ class App extends Component {
 
   collapseAll() {
     const { tour: { Attractions: collapsedAttractions } } = this.state;
-    // same as const collapsedAttractions = this.state.tour.Attractions
     for (let i = 0; i < collapsedAttractions.length; i += 1) {
       collapsedAttractions[i].display = false;
     }
@@ -44,7 +43,6 @@ class App extends Component {
 
   toggle(i) {
     const { tour: { Attractions: toggledAttraction } } = this.state;
-    // same as const toggledAttraction = this.state.tour.Attractions;
     if (toggledAttraction[i].display !== undefined) {
       toggledAttraction[i].display = !toggledAttraction[i].display;
     } else {
@@ -54,8 +52,9 @@ class App extends Component {
   }
 
   render() {
-    const pois = this.state.tour.Attractions;
-    const about = this.state.tour;
+    const { tour: { Attractions: attractions } } = this.state;
+    const { tour: about } = this.state;
+    const { isLoaded: showMap } = this.state;
     return (
       <Backdrop>
 
@@ -64,14 +63,30 @@ class App extends Component {
         <h2>Itinerary</h2>
 
         <LayoutRow>
-         {this.state.isLoaded ? (<GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={this.state.tour.Attractions} />) : null }
+          {/* Due to being implemented without a library,
+              the GoogleMaps API does not re-render when there are
+              property changes passed down to it, and so this will
+              cause the map not to actually render pins if it is
+              loaded outright.  So, we check if the pin data is loaded
+              before actually rendering the component.
+          */}
+          { showMap
+            ? (
+              <GoogleMap
+                collapseAll={this.collapseAll}
+                handlePin={this.toggle}
+                attractions={attractions}
+              />
+            )
+            : null }
+
           <LayoutColumn>
             <Panel>
               <DisplayHeading>You&rsquo;ll have 3 starting options</DisplayHeading>
               <Link to="#">See Important Information for details</Link>
             </Panel>
 
-            <AttractionList attractions={pois} handleToggle={this.toggle} />
+            <AttractionList attractions={attractions} handleToggle={this.toggle} />
 
             <Panel>
               <DisplayHeading>You&rsquo;ll end at</DisplayHeading>
