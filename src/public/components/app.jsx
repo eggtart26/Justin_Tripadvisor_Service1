@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       tour: {
         Attractions: [],
-      }
+      },
     };
     this.toggle = this.toggle.bind(this);
     this.loadTour = this.loadTour.bind(this);
@@ -46,6 +46,7 @@ class App extends Component {
     } else {
       pois[i].display = true;
     }
+    // jfufu 
     this.setState(pois);
   }
 

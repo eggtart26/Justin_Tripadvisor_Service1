@@ -49,6 +49,15 @@ class GoogleMap extends Component {
     };
 
     for (let i = 0; i < attractions.length; i += 1) {
+      const labelDefault = {
+        text: (i + 1).toString(),
+        color: '#ffffff',
+        fontWeight: 'bold',
+        lineHeight: '12px',
+        display: 'flex',
+      };
+
+      const labelHover = Object.assign({ color: 'rgb(26, 26, 26)', labelDefault });
       const pin = new window.google.maps.Marker({
         position: {
           lat: attractions[i].latitude,
@@ -57,18 +66,11 @@ class GoogleMap extends Component {
         },
         icon: defaultIcon,
         map,
-        label: {
-          text: (i + 1).toString(),
-          color: '#ffffff',
-          fontWeight: 'bold',
-          lineHeight: '12px',
-          display: 'flex',
-        },
+        label: labelDefault,
       });
 
       const handlePin = this.props.handlePin.bind(this);
       const collapseAll = this.props.collapseAll.bind(this);
-
       const infowindow = new google.maps.InfoWindow({
         content: attractions[i].name
       });
@@ -83,11 +85,13 @@ class GoogleMap extends Component {
 
       pin.addListener('mouseover', function() {
         this.setIcon(activeIcon);
+        this.setLabel(labelDefault);
         infowindow.open(map, this);
       });
 
       pin.addListener('mouseout', function() {
         this.setIcon(defaultIcon);
+        this.setLabel(labelHover);
         infowindow.close(map, this);
       });
     }
