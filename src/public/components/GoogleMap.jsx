@@ -67,6 +67,7 @@ class GoogleMap extends Component {
       });
 
       const handlePin = this.props.handlePin.bind(this);
+      const collapseAll = this.props.collapseAll.bind(this);
 
       const infowindow = new google.maps.InfoWindow({
         content: attractions[i].name
@@ -76,13 +77,13 @@ class GoogleMap extends Component {
         map.setZoom(14);
         map.setCenter(this.getPosition());
         let idx = this.label.text - 1;
+        collapseAll();
         handlePin(idx);
       });
 
       pin.addListener('mouseover', function() {
         this.setIcon(activeIcon);
         infowindow.open(map, this);
-       
       });
 
       pin.addListener('mouseout', function() {

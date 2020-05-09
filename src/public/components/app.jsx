@@ -17,6 +17,7 @@ class App extends Component {
     };
     this.toggle = this.toggle.bind(this);
     this.loadTour = this.loadTour.bind(this);
+    this.collapseAll = this.collapseAll.bind(this);
   }
 
   componentWillMount() {
@@ -30,8 +31,15 @@ class App extends Component {
       });
   }
 
+  collapseAll() {
+    const pois = this.state.tour.Attractions;
+    for (let poi of pois) {
+      poi.display = false;
+    }
+    this.setState({ pois });
+  }
+
   toggle(i) {
-    console.log("Toggle");
     const pois = this.state.tour.Attractions;
     if (pois[i].display != undefined) {
       pois[i].display = !pois[i].display;
@@ -52,7 +60,7 @@ class App extends Component {
         <h2>Itinerary</h2>
 
         <LayoutRow>
-          <GoogleMap handlePin={this.toggle} attractions={tour.Attractions} />
+          <GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={tour.Attractions} />
           <LayoutColumn>
             <Panel>
               <DisplayHeading>You&rsquo;ll have 3 starting options</DisplayHeading>
