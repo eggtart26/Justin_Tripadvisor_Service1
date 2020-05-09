@@ -22,42 +22,41 @@ class GoogleMap extends Component {
   }
 
   createGoogleMap() {
+    const handlePin = this.props.handlePin.bind(this);
+
+    const collapseAll = this.props.collapseAll.bind(this);
+
     const attractions = this.props.attractions;
-    const centerOn = {
-      lat: attractions[0].latitude,
-      lng: attractions[0].longitude
+
+    const iconBase = {
+      scaledSize: new google.maps.Size(35, 40),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 40),
     };
+
+    const defaultIcon = { ...iconBase, url: '/image/itinerary_stop.png'};
+
+    const activeIcon = {...iconBase, url: '/image/itinerary_stop_active.png'};
+
+    const labelBase = {
+      fontWeight: 'bold',
+      lineHeight: '12px',
+      display: 'flex'
+    }
+
+    const labelDefault = { ...labelBase, color: 'rgb(224, 224, 244)'};
+
+    const labelHover = { ...labelBase, color: 'rgb(26, 26, 26)'}
 
     const map = new window.google.maps.Map(this.googleMapRef.current, {
       zoom: 11,
-      center: centerOn,
+      center: { lat: 37.7749, lng: -122.4194 }, // san francisco
       disableDefaultUI: true,
     });
 
-    const defaultIcon = {
-      url: '/image/itinerary_stop.png',
-      scaledSize: new google.maps.Size(35, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(17, 40),
-    };
-
-    const activeIcon = {
-      url: '/image/itinerary_stop_active.png',
-      scaledSize: new google.maps.Size(35, 40),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(17, 40),
-    };
-
     for (let i = 0; i < attractions.length; i += 1) {
-      const labelDefault = {
-        text: (i + 1).toString(),
-        color: '#ffffff',
-        fontWeight: 'bold',
-        lineHeight: '12px',
-        display: 'flex',
-      };
-
-      const labelHover = Object.assign({ color: 'rgb(26, 26, 26)', labelDefault });
+      const myLabel = { ...labelDefault, text: (i + 1).toString()};
+      const myLabelHover = { ...labelHover, text: (i + 1).toString()};
       const pin = new window.google.maps.Marker({
         position: {
           lat: attractions[i].latitude,
@@ -66,11 +65,9 @@ class GoogleMap extends Component {
         },
         icon: defaultIcon,
         map,
-        label: labelDefault,
+        label: myLabel,
       });
 
-      const handlePin = this.props.handlePin.bind(this);
-      const collapseAll = this.props.collapseAll.bind(this);
       const infowindow = new google.maps.InfoWindow({
         content: attractions[i].name
       });
@@ -85,13 +82,13 @@ class GoogleMap extends Component {
 
       pin.addListener('mouseover', function() {
         this.setIcon(activeIcon);
-        this.setLabel(labelDefault);
+        this.setLabel(myLabelHover);
         infowindow.open(map, this);
       });
 
       pin.addListener('mouseout', function() {
         this.setIcon(defaultIcon);
-        this.setLabel(labelHover);
+        this.setLabel(myLabel);
         infowindow.close(map, this);
       });
     }
