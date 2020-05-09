@@ -21,7 +21,7 @@ class App extends Component {
     this.collapseAll = this.collapseAll.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadTour();
   }
 
@@ -29,27 +29,28 @@ class App extends Component {
     axios.get('tour')
       .then((response) => {
         this.setState({ tour: response.data });
-        this.setState({isLoaded: true });
+        this.setState({ isLoaded: true });
       });
   }
 
   collapseAll() {
-    const pois = this.state.tour.Attractions;
-    for (let poi of pois) {
-      poi.display = false;
+    const { tour: { Attractions: collapsedAttractions } } = this.state;
+    // same as const collapsedAttractions = this.state.tour.Attractions
+    for (let i = 0; i < collapsedAttractions.length; i += 1) {
+      collapsedAttractions[i].display = false;
     }
-    this.setState({ pois });
+    this.setState({ tour: { collapsedAttractions } });
   }
 
   toggle(i) {
-    const pois = this.state.tour.Attractions;
-    if (pois[i].display != undefined) {
-      pois[i].display = !pois[i].display;
+    const { tour: { Attractions: toggledAttraction } } = this.state;
+    // same as const toggledAttraction = this.state.tour.Attractions;
+    if (toggledAttraction[i].display !== undefined) {
+      toggledAttraction[i].display = !toggledAttraction[i].display;
     } else {
-      pois[i].display = true;
+      toggledAttraction[i].display = true;
     }
-    // jfufu 
-    this.setState(pois);
+    this.setState(toggledAttraction);
   }
 
   render() {
@@ -63,7 +64,7 @@ class App extends Component {
         <h2>Itinerary</h2>
 
         <LayoutRow>
-          {this.state.isLoaded ? (<GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={this.state.tour.Attractions} />) : null }
+         {this.state.isLoaded ? (<GoogleMap collapseAll={this.collapseAll} handlePin={this.toggle} attractions={this.state.tour.Attractions} />) : null }
           <LayoutColumn>
             <Panel>
               <DisplayHeading>You&rsquo;ll have 3 starting options</DisplayHeading>
@@ -78,7 +79,6 @@ class App extends Component {
             </Panel>
           </LayoutColumn>
         </LayoutRow>
-
         <GlobalStyles />
       </Backdrop>
     );
@@ -86,3 +86,9 @@ class App extends Component {
 }
 
 export default App;
+
+App.defaultProps = {
+};
+
+App.propTypes = {
+};
