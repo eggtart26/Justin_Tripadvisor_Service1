@@ -43,5 +43,5 @@ Rating.defaultProps = {
 
 Rating.propTypes = {
   score: PropTypes.number,
-  reviewcount: PropTypes.reviewcount,
+  reviewcount: PropTypes.number,
 };

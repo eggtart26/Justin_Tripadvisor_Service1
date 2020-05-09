@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './app';
+import App from '../public/components/app';
 
 describe('Itinerary block', () => {
   let wrapper;
@@ -25,14 +25,4 @@ describe('Itinerary block', () => {
     expect(loadTour).toHaveBeenCalled();
   });
 
-  // Unit test for this toggle method is in POI entry for individual POI.
-  xtest('It should toggle the display of a given POI', () => {
-    expect(toggle).not.toHaveBeenCalled();
-    wrapper.setState({ tour: { id: 1, Attractions: ['true'] } });
-    wrapper.update();
-    let button = wrapper.find('button');
-    button.simulate('click');
-    expect(toggle).toHaveBeenCalled();
-    spy.mockClear();
-  });
 });

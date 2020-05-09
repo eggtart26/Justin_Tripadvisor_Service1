@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import POIEntry from './POIEntry';
+import Attraction from '../public/components/Attraction';
 import dummydata from '../../dummydata.js';
 
 
@@ -10,7 +10,7 @@ describe('POI Entry component', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
-      <POIEntry
+      <Attraction
         data={data}
         expand={true}
         stopIndex={1}

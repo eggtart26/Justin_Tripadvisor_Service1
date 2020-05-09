@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GoogleMap from './GoogleMap';
+import GoogleMap from '../public/components/GoogleMap';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 // import { Marker } from '@googlemaps/jest-mocks';
-import dummydata from '../../dummydata.js';
+import dummydata from '../dummydata.js';
 
 describe('createGoogleMapsMock', () => {
   let googleMaps;
