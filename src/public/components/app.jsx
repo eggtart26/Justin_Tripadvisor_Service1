@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   toggle(i) {
+    console.log("Toggle");
     const pois = this.state.tour.Attractions;
     if (pois[i].display != undefined) {
       pois[i].display = !pois[i].display;
@@ -51,7 +52,7 @@ class App extends Component {
         <h2>Itinerary</h2>
 
         <LayoutRow>
-          <GoogleMap attractions={tour.Attractions} />
+          <GoogleMap handlePin={this.toggle} attractions={tour.Attractions} />
           <LayoutColumn>
             <Panel>
               <DisplayHeading>You&rsquo;ll have 3 starting options</DisplayHeading>

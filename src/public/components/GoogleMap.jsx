@@ -66,6 +66,8 @@ class GoogleMap extends Component {
         },
       });
 
+      const handlePin = this.props.handlePin.bind(this);
+
       const infowindow = new google.maps.InfoWindow({
         content: attractions[i].name
       });
@@ -73,12 +75,14 @@ class GoogleMap extends Component {
       pin.addListener('click', function() {
         map.setZoom(14);
         map.setCenter(this.getPosition());
-        console.log( "YO!" + this.label);
+        let idx = this.label.text - 1;
+        handlePin(idx);
       });
 
       pin.addListener('mouseover', function() {
         this.setIcon(activeIcon);
         infowindow.open(map, this);
+       
       });
 
       pin.addListener('mouseout', function() {
@@ -89,22 +93,21 @@ class GoogleMap extends Component {
   }
 
   render() {
-
-    const mapStyle ={
+    const mapStyle = {
       width: '350px',
       height: '350px',
       marginRight: '8px',
       top: '12px',
       zIndex: 1,
-      position: 'sticky !important'
-    }
+      position: 'sticky !important',
+    };
 
     return (
       <MyMapContainer>
         <div
           id="google-map"
           ref={this.googleMapRef}
-          style={{width: '100%', height: '100%'}}
+          style={{ width: '100%', height: '100%' }}
         />
       </MyMapContainer>
     );
@@ -112,3 +115,4 @@ class GoogleMap extends Component {
 }
 
 export default GoogleMap;
+
