@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import apikey from '../../config.js';
 import { MyMapContainer } from '../css/MapStyles';
+import SnazzyInfoWindow from 'snazzy-info-window';
 
 class GoogleMap extends Component {
   constructor(props) {
@@ -11,11 +12,8 @@ class GoogleMap extends Component {
 
   componentDidMount() {
     const googleScript = document.createElement('script');
-    const labelScript = document.createElement('script');
     googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`;
-    labelScript.src = `http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.9/src/markerwithlabel.js`;
     window.document.body.appendChild(googleScript);
-    window.document.body.appendChild(labelScript);
     googleScript.addEventListener('load', ()=> {
       this.googleMap = this.createGoogleMap();
     });
@@ -23,9 +21,7 @@ class GoogleMap extends Component {
 
   createGoogleMap() {
     const handlePin = this.props.handlePin.bind(this);
-
     const collapseAll = this.props.collapseAll.bind(this);
-
     const attractions = this.props.attractions;
 
     const iconBase = {
@@ -33,20 +29,16 @@ class GoogleMap extends Component {
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 40),
     };
-
     const defaultIcon = { ...iconBase, url: '/image/itinerary_stop.png'};
-
     const activeIcon = {...iconBase, url: '/image/itinerary_stop_active.png'};
 
     const labelBase = {
       fontWeight: 'bold',
       lineHeight: '12px',
       display: 'flex'
-    }
-
+    };
     const labelDefault = { ...labelBase, color: 'rgb(224, 224, 244)'};
-
-    const labelHover = { ...labelBase, color: 'rgb(26, 26, 26)'}
+    const labelHover = { ...labelBase, color: 'rgb(26, 26, 26)'};
 
     const map = new window.google.maps.Map(this.googleMapRef.current, {
       zoom: 11,
@@ -57,6 +49,7 @@ class GoogleMap extends Component {
     for (let i = 0; i < attractions.length; i += 1) {
       const myLabel = { ...labelDefault, text: (i + 1).toString()};
       const myLabelHover = { ...labelHover, text: (i + 1).toString()};
+
       const pin = new window.google.maps.Marker({
         position: {
           lat: attractions[i].latitude,
@@ -69,7 +62,7 @@ class GoogleMap extends Component {
       });
 
       const infowindow = new google.maps.InfoWindow({
-        content: attractions[i].name
+        content: attractions[i].name,
       });
 
       pin.addListener('click', function() {
