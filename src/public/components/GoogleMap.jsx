@@ -83,6 +83,7 @@ class GoogleMap extends Component {
 
       pin.addListener('mouseout', function() {
         this.setIcon(defaultIcon);
+        infowindow.close(map, this);
       });
     }
   }
