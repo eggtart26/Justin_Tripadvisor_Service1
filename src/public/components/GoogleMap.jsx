@@ -66,6 +66,10 @@ class GoogleMap extends Component {
         },
       });
 
+      const infowindow = new google.maps.InfoWindow({
+        content: attractions[i].name
+      });
+
       pin.addListener('click', function() {
         map.setZoom(14);
         map.setCenter(this.getPosition());
@@ -74,6 +78,7 @@ class GoogleMap extends Component {
 
       pin.addListener('mouseover', function() {
         this.setIcon(activeIcon);
+        infowindow.open(map, this);
       });
 
       pin.addListener('mouseout', function() {
