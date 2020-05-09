@@ -57,7 +57,13 @@ class GoogleMap extends Component {
         },
         icon: defaultIcon,
         map,
-        label: (i + 1).toString(),
+        label: {
+          text: (i + 1).toString(),
+          color: '#ffffff',
+          fontWeight: 'bold',
+          lineHeight: '12px',
+          display: 'flex',
+        },
       });
 
       pin.addListener('click', function() {
