@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GlobalStyles from '../css/globalstyles';
-import POIEntry from './POIEntry';
+import AttractionList from './AttractionList';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import GoogleMap from './GoogleMap';
 import tour from '../../dummydata';
@@ -70,21 +70,7 @@ class App extends Component {
               <Link to="#">See Important Information for details</Link>
             </Panel>
 
-            <Panel>
-              <List>
-                {pois.map((poi, index) => (
-                  <div key={`poi${index}`}>
-                    <Link to={`stop${index}`} spy={true} smooth={true} offset={-16} duration={500} id={`stop${index}`} />
-                    <POIEntry
-                      onClick={this.toggle}
-                      data={poi}
-                      expand={poi.display ? poi.display : false}
-                      stopIndex={index + 1}
-                    />
-                  </div>
-                ))}
-              </List>
-            </Panel>
+            <AttractionList attractions={pois} handleToggle={this.toggle} />
 
             <Panel>
               <DisplayHeading>You&rsquo;ll end at</DisplayHeading>

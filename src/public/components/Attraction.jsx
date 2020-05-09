@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
+import { Link } from 'react-scroll';
 import Rating from './Rating';
 import { DropdownButton, ButtonLike, TourItem, TourTitle, TourCounter, TourDetails } from '../css/POIStyles';
 
-const POIEntry = ({data, expand, stopIndex, onClick}) => {
+const Attraction = ({data, expand, stopIndex, onClick}) => {
   return (
     <TourItem>
       <TourCounter>{stopIndex}</TourCounter>
         <div>
-          <TourTitle>{data.name}</TourTitle>
-          <div>
-            <span className="tour__body">
-              Stop: 4 hours
-            </span>
-            -
-            <span className="admission">
-              Admission included
-            </span>
-          </div>
+          <Link
+            to={`stop-${stopIndex}`}
+            spy={true}
+            smooth={true}
+            offset={-16}
+            duration={500}
+            id={`stop-${stopIndex}`}
+          >
+            <TourTitle>{data.name}</TourTitle>
+            <div>
+              <span className="tour__body">
+                Stop: 4 hours
+              </span>
+              -
+              <span className="admission">
+                Admission included
+              </span>
+            </div>
+          </Link>
 
           <TourDetails displayme={expand}>
             <div className="rating">
@@ -45,4 +55,4 @@ const POIEntry = ({data, expand, stopIndex, onClick}) => {
 };
 
 
-export default POIEntry;
+export default Attraction;

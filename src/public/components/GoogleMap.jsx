@@ -59,6 +59,7 @@ class GoogleMap extends Component {
         icon: defaultIcon,
         map,
         label: myLabel,
+        customKeyLol: function(){ console.log("I be firin' custom functions bruh"); }
       });
 
       const infowindow = new google.maps.InfoWindow({
@@ -71,6 +72,7 @@ class GoogleMap extends Component {
         let idx = this.label.text - 1;
         collapseAll();
         handlePin(idx);
+        this.customKeyLol();
       });
 
       pin.addListener('mouseover', function() {
