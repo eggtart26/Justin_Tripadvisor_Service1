@@ -20,5 +20,4 @@ describe('AttractionList component', () => {
   test('It should render the AttractionList component to the screen', () => {
     expect(wrapper).toExist();
   });
-}
-
+});

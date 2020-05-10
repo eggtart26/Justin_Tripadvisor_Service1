@@ -38,7 +38,7 @@ class App extends Component {
     for (let i = 0; i < collapsedAttractions.length; i += 1) {
       collapsedAttractions[i].display = false;
     }
-    this.setState({ tour: { collapsedAttractions } });
+    this.setState({ tour: { Attractions: collapsedAttractions } });
   }
 
   toggle(i) {
