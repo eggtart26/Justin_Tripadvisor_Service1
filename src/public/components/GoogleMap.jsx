@@ -8,15 +8,20 @@ class GoogleMap extends Component {
     super(props);
     this.state = {};
     this.googleMapRef = createRef();
+    this.embedGoogleMaps = this.embedGoogleMaps.bind(this);
   }
 
-  componentDidMount() {
+  embedGoogleMaps() {
     const googleScript = document.createElement('script');
     googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`;
     window.document.body.appendChild(googleScript);
     googleScript.addEventListener('load', ()=> {
       this.googleMap = this.createGoogleMap();
     });
+  }
+
+  componentDidMount() {
+    this.embedGoogleMaps(); 
   }
 
   createGoogleMap() {

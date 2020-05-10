@@ -1,18 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import GoogleMap from '../public/components/GoogleMap';
 import createGoogleMapsMock from 'jest-google-maps-mock';
 // import { Marker } from '@googlemaps/jest-mocks';
 import dummydata from '../dummydata.js';
 
 describe('createGoogleMapsMock', () => {
-  let googleMaps;
-  beforeEach(() => {
-    googleMaps = createGoogleMapsMock();
-  });
   it('should create a map mock', () => {
+    const googleMaps = createGoogleMapsMock();
     const mapDiv = document.createElement('div');
-    new googleMaps.Map(mapDiv);
+    const map = new googleMaps.Map(mapDiv);
     expect(googleMaps.Map).toHaveBeenCalledTimes(1);
     expect(googleMaps.Map.mock.instances.length).toBe(1);
     expect(googleMaps.Map).toHaveBeenLastCalledWith(mapDiv);
@@ -21,8 +18,13 @@ describe('createGoogleMapsMock', () => {
 
 describe('Map Component', () => {
   let googleMaps;
+  let wrapper;
+  let map;
+  let mapDiv = document.createElement('div');
   beforeEach(() => {
+    wrapper = shallow(<GoogleMap />);
     googleMaps = createGoogleMapsMock();
+    map = new googleMaps.Map(mapDiv);
   });
 
   it('renders to the screen', () => {
@@ -30,27 +32,29 @@ describe('Map Component', () => {
     expect(wrapper).toExist();
   });
 
-  it('should have a Marker method appended to the google map instance', () => {
-    expect(googleMaps.Marker).toBeTruthy();
+  it('embeds the Google Maps API', () => {
+    const instance = mount(<GoogleMap />).instance();
+    const spy = jest.spyOn(instance, 'embedGoogleMaps');
+    instance.componentDidMount();
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
   });
+})
 
-  xit('should invoke the Marker constructor for each tour attraction', () => {
 
-    // In order to track calls to the constructor, replace the function returned by the HOF
-    // with a Jest mock function. Create it with jest.fn(), and then specify its
-    // implementation with mockImplementation().
-
-    // It's still eluding me how to test these pins but I've spent a lot of time
-    // So i'm going to move forward for now.  This test is X'ed out.
-
-    const num = dummydata.Attractions.length;
-
-    jest.mock('./GoogleMap', () => {
-      return jest.fn().mockImplementation(() => {
-        return {};
-      });
-    });
-    const wrapper = mount(<GoogleMap attractions={dummydata.Attractions} />);
-    expect(googleMaps.Marker).toHaveBeenCalledTimes(num);
+xdescribe( 'The DOM', () => {
+  it( 'Has a bound load event which, when fired, makes something happen in the component.', () => {
+    //i need to simulate the mechanism of googleScript.addEventListener. 
+    const eventMap = {
+      load: null,
+    };
+    window.addEventListener = jest.fn((event, callback) => { eventMap[event] = callback});
+    const component = mount(<GoogleMap />).instance();
+    component.componentDidMount();
+    const script = document.createElement('script');
+    script.src = 'https://localhost:3000';
+    window.document.body.appendChild(script);
+    const spy = jest.spyOn( component, 'createGoogleMap');
+    expect(spy).toHaveBeenCalled();
   });
 });

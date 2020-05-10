@@ -4,17 +4,17 @@ import App from '../public/components/app';
 
 describe('Itinerary block', () => {
   let wrapper;
+  let collapse;
   let loadTour;
-  let toggle;
   beforeEach(() => {
     wrapper = shallow(<App />);
     loadTour = jest.spyOn(App.prototype, 'loadTour');
-    toggle = jest.spyOn(App.prototype, 'toggle');
+    collapse = jest.spyOn(App.prototype, 'collapseAll');
   });
 
   afterEach(() => {
     loadTour.mockClear();
-    toggle.mockClear();
+    collapse.mockClear();
   });
 
   test('It should render the component to the screen', () => {
@@ -24,5 +24,4 @@ describe('Itinerary block', () => {
   test('It should load a tour on render', () => {
     expect(loadTour).toHaveBeenCalled();
   });
-
 });
