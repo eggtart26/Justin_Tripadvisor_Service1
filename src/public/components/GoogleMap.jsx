@@ -59,7 +59,6 @@ class GoogleMap extends Component {
         icon: defaultIcon,
         map,
         label: myLabel,
-        openPOI: function(){ console.log( "la" )},
       });
 
       const infowindow = new google.maps.InfoWindow({
@@ -72,7 +71,6 @@ class GoogleMap extends Component {
         let idx = this.label.text - 1;
         collapseAll();
         handlePin(idx);
-        this.openPOI();
       });
 
       pin.addListener('mouseover', function() {
@@ -100,6 +98,7 @@ class GoogleMap extends Component {
     };
 
     return (
+      <div>
       <MyMapContainer>
         <div
           id="google-map"
@@ -107,9 +106,10 @@ class GoogleMap extends Component {
           style={{ width: '100%', height: '100%' }}
         />
       </MyMapContainer>
+        <div id="marker-1"> Yo </div>
+      </div>
     );
   }
 }
 
 export default GoogleMap;
-
