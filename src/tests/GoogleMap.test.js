@@ -42,19 +42,48 @@ describe('Map Component', () => {
 })
 
 
-xdescribe( 'The DOM', () => {
-  it( 'Has a bound load event which, when fired, makes something happen in the component.', () => {
+describe('The DOM', () => {
+  it('Has a bound load event which, when fired, makes something happen in the component.', () => {
     //i need to simulate the mechanism of googleScript.addEventListener. 
-    const eventMap = {
-      load: null,
-    };
-    window.addEventListener = jest.fn((event, callback) => { eventMap[event] = callback});
-    const component = mount(<GoogleMap />).instance();
-    component.componentDidMount();
-    const script = document.createElement('script');
-    script.src = 'https://localhost:3000';
-    window.document.body.appendChild(script);
-    const spy = jest.spyOn( component, 'createGoogleMap');
-    expect(spy).toHaveBeenCalled();
+    /*
+    embedGoogleMaps() {
+      const googleScript = document.createElement('script');
+      googleScript.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`;
+      window.document.body.appendChild(googleScript);
+      googleScript.addEventListener('load', ()=> {
+        this.googleMap = this.createGoogleMap();
+      });
+    }
+    */
+
+    /*
+    test("Test component with mount + document query selector",()=>{
+      const wrapper = mount(<YourComponent/>,{ attachTo: window.domNode });
+    });
+    */
+
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = mount(<GoogleMap />, { attachTo: window.domNode });
+    });
+    const elementMock = { addEventListener: jest.fn() };
+
+    //target container needs to be a dom element.
+    jest.spyOn(document, 'createElement').mockImplementation(() => elementMock);
+    wrapper.update();
+    expect(elementMock.addEventListener).toBeCalledWith('load', expect.any(Function), false);
+
+    // const eventMap = {
+    //   load: null,
+    // };
+    // window.addEventListener = jest.fn((event, callback) => { eventMap[event] = callback});
+    // const component = mount(<GoogleMap />).instance();
+    // component.componentDidMount();
+    // const script = document.createElement('script');
+    // script.src = 'https://localhost:3000';
+    // window.document.body.appendChild(script);
+    // const spy = jest.spyOn( component, 'createGoogleMap');
+    // expect(spy).toHaveBeenCalled();
   });
 });
