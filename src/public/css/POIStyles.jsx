@@ -107,7 +107,7 @@ const TourTitle = styled.span`
 
 const TourDetails = styled.div`
   opacity: ${props => (props.displayme ? "1" : "0")};
-  max-height: ${props => (props.displayme ? "500px" : "0")};
+  max-height: ${props => (props.displayme ? "1000px" : "0")};
   overflow-y: hidden;
   transform: translate3d(0, 0, 0);  
   -webkit-transform: translate3d(0, 0, 0);

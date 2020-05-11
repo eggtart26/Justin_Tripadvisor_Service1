@@ -55,7 +55,7 @@ module.exports = function (models) {
 
   // Make a batch of tours:
   const tours = [];
-  for (let i = 0; i < 25; i += 1) {
+  for (let i = 0; i < 100; i += 1) {
     const tour = {
       name: makeTitle(),
       overview: faker.lorem.sentences(),
@@ -67,7 +67,7 @@ module.exports = function (models) {
 
   // Make a batch of attractions:
   const attractions = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 500; i += 1) {
     const attraction = {
       name: faker.lorem.words(),
       latitude: Math.random() * (coords.north - coords.south) + coords.south,
@@ -91,10 +91,10 @@ module.exports = function (models) {
       });
     })
     .then(() => {
-      for (let i = 0; i < 100; i += 1) {
-        // A given tour is going to have an ID between 1 and 25
-        const tour_id = _.random(1, 25);
-        // a given attraction will have an ID between 1 and 100
+      for (let i = 0; i < 500; i += 1) {
+        // A given tour is going to have an ID between 1 and 100
+        const tour_id = _.random(1, 100);
+        // a given attraction will have an ID between 1 and 500
         const attraction_id = i;
         models.Attraction.findOne({
           where: { id: attraction_id },
