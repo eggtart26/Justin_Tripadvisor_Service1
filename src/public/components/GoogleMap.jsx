@@ -111,7 +111,6 @@ class GoogleMap extends Component {
           style={{ width: '100%', height: '100%' }}
         />
       </MyMapContainer>
-        <div id="marker-1"> Yo </div>
       </div>
     );
   }

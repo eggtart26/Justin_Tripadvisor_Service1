@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const defaultTypeface = "Muli, Arial, 'Helvetica Neue', Helvetica, sans-serif";
+const defaultTypeface = "Roboto, Arial, 'Helvetica Neue', Helvetica, sans-serif";
 
 const Backdrop = styled.section`
   font-family: var(--bodytypeface, ${defaultTypeface} );
