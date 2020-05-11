@@ -13,7 +13,6 @@ const sequelizeOptions = { force: process.env.FORCE_TRUNCATE || false };
 
 app.set('sqlport', process.env.SQLPORT || 5432);
 
-
 app.listen(3000, () => {
   console.log('Express server listening on port 3000.');
 });
