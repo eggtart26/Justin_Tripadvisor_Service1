@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const defaultTypeface = "Muli, Arial, 'Helvetica Neue', Helvetica, sans-serif";
+const defaultTypeface = "Roboto, Arial, 'Helvetica Neue', Helvetica, sans-serif";
 
-const Block = styled.section`
+const Backdrop = styled.section`
   font-family: var(--bodytypeface, ${defaultTypeface} );
   -webkit-font-smoothing:antialiased;
   max-width: 813px;
@@ -12,13 +12,13 @@ const Block = styled.section`
   border: 1px solid rgb(224, 224, 224);
   border-radius: 2px;
   margin: 12px;
+  font-size: 12px;
 `;
 
 const List = styled.ul`
-  border-top: 1px solid rgb(224, 224, 224);
-  border-bottom: 1px solid rgb(224, 224, 224);
   border-left: 4px dotted rgb(24, 24, 24);
-  padding: 4px 8px;
+  padding: 8px 8px 8px 0px;
+  margin-left: 8px;
 `;
 
 const Flex = styled.div`
@@ -27,6 +27,15 @@ const Flex = styled.div`
 
 const LayoutRow = styled(Flex)`
   flex-direction: row;
+`;
+
+const Panel = styled.div`
+  margin: 4px;
+  padding: 8px;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  &:last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const LayoutColumn = styled(Flex)`
@@ -45,10 +54,19 @@ const SRSpan = styled.span`
   border: 0;
 `;
 
+const DisplayHeading = styled.span`
+  font-weight: bold;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 4px;
+`;
+
 export {
-  Block,
+  Backdrop,
+  Panel,
   List,
   LayoutRow,
   LayoutColumn,
-  SRSpan
+  SRSpan,
+  DisplayHeading
 }

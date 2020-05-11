@@ -4,6 +4,7 @@ import { RatingDot, RatingFiller, HalfRating, FullRating} from '../css/RatingSty
 import { SRSpan } from '../css/layout'
 
 const Rating = ({ score, reviewcount }) => {
+
   let rating = [0, 0, 0, 0, 0];
   const fullDots = Math.floor(score);
   for (let i = 0; i < fullDots; i += 1) {
@@ -23,9 +24,7 @@ const Rating = ({ score, reviewcount }) => {
       {rating.map((circle, index) => {
         return (
           <RatingDot key={index}>
-            {
-              <RatingFiller ratingstyle={circle}/>
-            }
+            <RatingFiller ratingstyle={circle}/>
           </RatingDot>
         );
       })}
@@ -44,4 +43,5 @@ Rating.defaultProps = {
 
 Rating.propTypes = {
   score: PropTypes.number,
+  reviewcount: PropTypes.number,
 };
