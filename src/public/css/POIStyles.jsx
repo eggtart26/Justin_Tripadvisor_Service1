@@ -79,6 +79,10 @@ const TourItem = styled.li`
   cursor: pointer;
   cursor: hand;
   font-size: 12px;
+
+  img {
+    width: 100%;
+  }
 `;
 
 const TourCounter = styled.span`
