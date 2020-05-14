@@ -3,7 +3,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 
 const user = process.env.SQLUSER || 'snaketours';
-const password = process.env.SQLPASS || null;
+const password = process.env.SQLPASS || 'snaketours';
 const myport = process.env.SQLPORT || 5432;
 const dbname = process.env.SQLDBNAME || 'snaketours';
 const myhost = process.env.SQLHOST || 'localhost';
