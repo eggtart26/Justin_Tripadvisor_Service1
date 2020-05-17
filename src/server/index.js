@@ -6,12 +6,15 @@ const controller = require('./database/controller');
 
 http = http.Server(app);
 
-const sequelizeOptions = { force: false, logging: false };
+const sequelizeOptions = { force: true, logging: false };
 
-// If force is true, Sequelize will drop all tables and re-add whatever is in models
-// when the server starts.  This option should be put to 'false' in production!
+// If force is true (and it is), Sequelize will drop all
+// tables and re-add whatever is in models when the server starts.
+// This is nifty for y'all to be able to make changes to the DB
+// and not have to constantly do some pruning.
+//  This option should be eventually put to 'false'!
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.set('sqlport', process.env.SQLPORT || 5432);
 

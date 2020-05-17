@@ -34,8 +34,8 @@ class GoogleMap extends Component {
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 40),
     };
-    const defaultIcon = { ...iconBase, url: '/image/itinerary_stop.png'};
-    const activeIcon = {...iconBase, url: '/image/itinerary_stop_active.png'};
+    const defaultIcon = { ...iconBase, url: 'https://itinerarybucket.s3-us-west-2.amazonaws.com/itinerary_stop.png'};
+    const activeIcon = {...iconBase, url: 'https://itinerarybucket.s3-us-west-2.amazonaws.com/itinerary_stop.png'};
 
     const labelBase = {
       fontWeight: 'bold',
