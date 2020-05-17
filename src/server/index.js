@@ -11,10 +11,12 @@ const sequelizeOptions = { force: false, logging: false };
 // If force is true, Sequelize will drop all tables and re-add whatever is in models
 // when the server starts.  This option should be put to 'false' in production!
 
+const port = process.env.PORT || 3000
+
 app.set('sqlport', process.env.SQLPORT || 5432);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Express server listening on port 3000.');
+app.listen(port, () => {
+  console.log(`Express server listening on port ${port}`);
 });
 
 models.sequelize.sync(sequelizeOptions).then(() => {
