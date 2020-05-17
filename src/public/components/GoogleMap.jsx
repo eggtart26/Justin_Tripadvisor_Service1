@@ -1,7 +1,6 @@
 import React, { Component, createRef } from 'react';
 import apikey from '../../config.js';
 import { MyMapContainer } from '../css/MapStyles';
-import SnazzyInfoWindow from 'snazzy-info-window';
 
 class GoogleMap extends Component {
   constructor(props) {
@@ -34,16 +33,16 @@ class GoogleMap extends Component {
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 40),
     };
-    const defaultIcon = { ...iconBase, url: '/image/itinerary_stop.png'};
-    const activeIcon = {...iconBase, url: '/image/itinerary_stop_active.png'};
+    const defaultIcon = { ...iconBase, url: 'https://itinerarybucket.s3-us-west-2.amazonaws.com/itinerary_stop.png'};
+    const activeIcon = {...iconBase, url: 'https://itinerarybucket.s3-us-west-2.amazonaws.com/itinerary_stop_active.png'};
 
     const labelBase = {
       fontWeight: 'bold',
       lineHeight: '12px',
-      display: 'flex'
+      display: 'flex',
     };
-    const labelDefault = { ...labelBase, color: 'rgb(224, 224, 244)'};
-    const labelHover = { ...labelBase, color: 'rgb(26, 26, 26)'};
+    const labelDefault = { ...labelBase, color: 'rgb(224, 224, 244)' };
+    const labelHover = { ...labelBase, color: 'rgb(26, 26, 26)' };
 
     const map = new window.google.maps.Map(this.googleMapRef.current, {
       zoom: 11,
@@ -52,8 +51,8 @@ class GoogleMap extends Component {
     });
 
     for (let i = 0; i < attractions.length; i += 1) {
-      const myLabel = { ...labelDefault, text: (i + 1).toString()};
-      const myLabelHover = { ...labelHover, text: (i + 1).toString()};
+      const myLabel = { ...labelDefault, text: (i + 1).toString() };
+      const myLabelHover = { ...labelHover, text: (i + 1).toString() };
 
       const pin = new window.google.maps.Marker({
         position: {

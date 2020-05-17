@@ -26,6 +26,7 @@ app.get('/tour/:id', (req, res) => {
 });
 
 app.get('/tour/', (req, res) => {
+  console.log("Tour route was hit.");
   // This route will look up a tour by ID and send the relevant data.
   ctlr.getRandomTour((err, data) => {
     if (err) {

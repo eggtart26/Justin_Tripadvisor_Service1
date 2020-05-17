@@ -34,7 +34,7 @@ const Attraction = ({data, expand, stopIndex, onClick}) => {
             </div>
 
             <img
-              src={`/image/gallery/${data.image_path}`}
+              src={data.image_path}
               alt={data.image_alt}
             />
             <p>
