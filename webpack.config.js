@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'public', 'components', 'main.jsx'),
@@ -39,4 +40,5 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+
 }
